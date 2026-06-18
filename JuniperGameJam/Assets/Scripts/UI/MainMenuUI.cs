@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class MainMenuUI : MonoBehaviour
     //[SerializeField] private CinemachineCamera _camera;
     //[SerializeField] private CinemachineCamera _camera2;
 
-    [SerializeField] private float fadeSpeed = 0.1f;
+    [SerializeField] private float fadeSpeed = 0.05f;
 
     private CanvasGroup canvasGroup;
     public static MainMenuUI Instance { get; private set; }
@@ -56,29 +57,28 @@ public class MainMenuUI : MonoBehaviour
             }
         });
 
-        CreditsButton.onClick.AddListener(() =>
-        {
-            CreditsCanvas.Show();
-            Hide();
-        });
+        //CreditsButton.onClick.AddListener(() =>
+        //{
+        //    CreditsCanvas.Show();
+        //    Hide();
+        //});
     }
 
     private IEnumerator FadeOut()
     {
         while (canvasGroup.alpha > 0.01f)
         {
-            canvasGroup.alpha = Mathf.Lerp(
-                canvasGroup.alpha,
-                0,
-                fadeSpeed * Time.deltaTime
-            );
+            canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 0f, fadeSpeed);
 
             yield return null;
         }
 
         canvasGroup.alpha = 0;
         Hide();
+
+        StartCoroutine(LoadSceneRoutine());
     }
+
     public IEnumerator FadeIn()
     {
         while (canvasGroup.alpha < 0.99f)
@@ -94,6 +94,12 @@ public class MainMenuUI : MonoBehaviour
 
         canvasGroup.alpha = 1;
         
+    }
+
+    private IEnumerator LoadSceneRoutine()
+    {
+        SceneManager.LoadScene(Globals.GAMEPLAY_SCENE_NAME);
+        yield return null;
     }
 
     public void giveCameraOnePriority()

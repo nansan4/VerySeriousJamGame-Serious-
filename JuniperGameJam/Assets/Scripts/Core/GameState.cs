@@ -31,10 +31,8 @@ public class GameState : MonoBehaviour
     protected GameStatus currentGameStatus = GameStatus.Initializing; //represents progress status of the game
     public GameStatus CurrentGameStatus { get { return currentGameStatus; } }
 
-    //declare game-specific info HERE (milestone 2) (lives, timer, etc.)
-    [SerializeField] public int maxHealth = 3;
-    [SerializeField] public int playerHealth;
-    [SerializeField] public bool isPortalActivated = false;
+    //declare game-specific info HERE(lives, timer, etc.)
+    
     //[SerializeField] private AudioSource playerDamageSound;
     [SerializeField] private float timeSpeedUpMultiplier = 1.0f;
 
@@ -42,8 +40,6 @@ public class GameState : MonoBehaviour
     //invoke whenever important info in GameState changes, observers (listeners) can execute code when invoked
     public UnityEvent OnGamePaused;
     public UnityEvent OnGameResumed;
-    public UnityEvent OnSlowCardUsed;
-    public UnityEvent OnSlowCardStop;
 
     public UnityEvent OnLose;
     public UnityEvent OnWin;
@@ -76,7 +72,6 @@ public class GameState : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-        playerHealth = maxHealth;
 
         //for(int i = 0; i < maxHealth; i++)
         //{
