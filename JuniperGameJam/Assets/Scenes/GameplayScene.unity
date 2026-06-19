@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &146742455
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -249,9 +249,13 @@ MonoBehaviour:
   rb: {fileID: 146742460}
   col: {fileID: 146742455}
   detectionTrigger: {fileID: 0}
+  hookLoop: {fileID: 312303830}
+  mat: {fileID: 2100000, guid: 918c8ffd12ae79c4a8259f4045bee71c, type: 2}
   isFragile: 1
   breakForceThreshold: 1
   malfunctionMultiplier: 1
+  despawnWaitTime: 1
+  enableDebug: 0
 --- !u!54 &146742460
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -669,6 +673,51 @@ Transform:
   - {fileID: 1720210456}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &593096472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 593096474}
+  - component: {fileID: 593096473}
+  m_Layer: 0
+  m_Name: BoxCleanupManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &593096473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593096472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04335e588f545a048987b007523c6e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoxCleanupManager
+  destroyCount: 5
+--- !u!4 &593096474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593096472}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.76823, y: 0, z: -1.01723}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &653126104
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +732,7 @@ GameObject:
   - component: {fileID: 653126105}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Delivery Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1367,9 +1416,13 @@ MonoBehaviour:
   rb: {fileID: 1256407349}
   col: {fileID: 1256407344}
   detectionTrigger: {fileID: 0}
+  hookLoop: {fileID: 791443526}
+  mat: {fileID: 2100000, guid: 51922b5662c42b545a86de33dc2f0955, type: 2}
   isFragile: 0
   breakForceThreshold: 1
   malfunctionMultiplier: 1
+  despawnWaitTime: 1
+  enableDebug: 0
 --- !u!54 &1256407349
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1885,3 +1938,4 @@ SceneRoots:
   - {fileID: 214001477}
   - {fileID: 1256407347}
   - {fileID: 146742458}
+  - {fileID: 593096474}
