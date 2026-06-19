@@ -37,6 +37,16 @@ public class GameState : MonoBehaviour
     [SerializeField] private float timeSpeedUpMultiplier = 1.0f;
 
 
+    [Header("Difficulty Params")]
+    [SerializeField] private float _boxMalfunctionChance_Normal = 0.1f;
+    [SerializeField] private float _boxMalfunctionChance_Hard = 0.45f;
+    private float _boxMalfunctionChance;
+
+    #region DifficultyGetters
+    public float BoxMalfunctionChance { get { return  _boxMalfunctionChance; } }
+
+    #endregion
+
     //invoke whenever important info in GameState changes, observers (listeners) can execute code when invoked
     public UnityEvent OnGamePaused;
     public UnityEvent OnGameResumed;
