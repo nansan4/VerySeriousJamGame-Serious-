@@ -31,7 +31,7 @@ public class PlayerMovement : BaseMovement
 
     [Header("Virtual Camera References")]
     [SerializeField] private CinemachineCamera mainCamera;
-    [SerializeField] private CinemachineCamera altCamera;
+    
 
     [Header("Character - Component/Object References")]
     private CapsuleCollider capsuleCollider;
