@@ -29,6 +29,7 @@ public class BoxCleanupManager : MonoBehaviour
     public void AddObjectToDestroy(GameObject obj)
     {
         _toDestroy.Add(obj);
+        Debug.Log("Added object to destroy, count is now: " + _toDestroy.Count);
 
         if(_toDestroy.Count >= destroyCount)
         {

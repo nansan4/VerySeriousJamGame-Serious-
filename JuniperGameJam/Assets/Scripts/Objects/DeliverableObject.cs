@@ -30,12 +30,12 @@ public class DeliverableObject : MonoBehaviour
     private void Start()
     {
         _currentMalfunctionChance = GameState.Instance.BoxMalfunctionChance * malfunctionMultiplier;
-        _invalidityTime = GameState.Instance.BoxInvalidityTime;
+        //_invalidityTime = GameState.Instance.BoxInvalidityTime;
+        _invalidityTime = 45f;
 
         _meshRenderer = gameObject.GetComponent<MeshRenderer>();
 
-        _isDelivered = enableDebug ? true : false;
-        if (_isDelivered) CheckDelivery();
+        //if (enableDebug) CheckDelivery();
 
         StartCoroutine(InvalidityRoutine());
     }
@@ -49,11 +49,18 @@ public class DeliverableObject : MonoBehaviour
         {
             //Debug.Log("impulse: " + collision.impulse.magnitude);
             BreakDeliverable();
+            return;
         }
 
         if(collision.collider.CompareTag("Delivery Surface") && collision.gameObject == _destination)
         {
             _isOnSurface = true;
+
+            CheckDelivery();
+        }else if(collision.collider.CompareTag("Delivery Surface") && collision.gameObject != _destination)
+        {
+            collision.collider.gameObject.TryGetComponent<DeliverySurface>(out DeliverySurface surface);
+            if (surface) surface.RejectSequence();
         }
     }
 
@@ -70,6 +77,8 @@ public class DeliverableObject : MonoBehaviour
         if (other.gameObject.CompareTag("Hook"))
         {
             _isOffHook = true;
+
+            CheckDelivery();
         }
     }
 
@@ -83,9 +92,10 @@ public class DeliverableObject : MonoBehaviour
 
     private IEnumerator InvalidityRoutine()
     {
+        Debug.Log("starting invalidity routine");
         yield return new WaitForSeconds(_invalidityTime);
-
-        DeliveryManager.Instance.ChangeScore(true); //decrement score for missed box
+        Debug.Log("box is invalid now");
+        DeliveryManager.Instance.DecrementScore();
         //pass reason to ui manager to display
 
         PrepareBoxDestroy();
@@ -100,9 +110,10 @@ public class DeliverableObject : MonoBehaviour
 
     private void CheckDelivery()
     {
-        Debug.Log("checking delivery for object: " + gameObject + ": is on surface: " + _isOnSurface + " is off hook: " + _isOffHook + " is delivered: " + _isDelivered);
-        if((_isOnSurface && _isOffHook) || _isDelivered)
+        //Debug.Log("checking delivery for object: " + gameObject + ": is on surface: " + _isOnSurface + " is off hook: " + _isOffHook);
+        if((_isOnSurface && _isOffHook) || enableDebug)
         {
+            Debug.Log("box is delivered!");
             _isDelivered = true;
 
             float mal = Random.Range(0.0f, 1.0f);
@@ -114,15 +125,23 @@ public class DeliverableObject : MonoBehaviour
             }
             else
             {
+                Debug.Log("setting hook loop inactive");
                 hookLoop.SetActive(false);
                 //or play anim here
             }
 
             // minimal components + not happening often = prolly not a big issue
-            DeliverySurface surface = _destination.GetComponent<DeliverySurface>();
-            surface.DeliverySequence();
+            if(_destination != null)
+            {
+                _destination.TryGetComponent<DeliverySurface>(out DeliverySurface surface);
+                if (surface) surface.DeliverySequence();
+                StartCoroutine(DespawnRoutine());
+            }
+            else
+            {
+                Debug.Log("_destination is null");
+            }
 
-            StartCoroutine(DespawnRoutine());
         }
     }
 
@@ -137,8 +156,11 @@ public class DeliverableObject : MonoBehaviour
 
     private void PrepareBoxDestroy()
     {
+        Debug.Log("preparing box for destruction");
         _meshRenderer.enabled = false;
         col.enabled = false;
+        StopCoroutine(InvalidityRoutine());
+        DeliveryManager.Instance.DecrementBoxCount();
 
         BoxCleanupManager.Instance.AddObjectToDestroy(gameObject);
 
@@ -146,7 +168,7 @@ public class DeliverableObject : MonoBehaviour
 
     public void SetDestination(GameObject destination)
     {
-        //set game object so i can compare object with collision detection
+        //set game object in order to compare object using collision detection
         _destination = destination;
     }
 }

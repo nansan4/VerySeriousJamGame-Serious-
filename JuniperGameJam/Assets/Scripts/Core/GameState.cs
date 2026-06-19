@@ -35,7 +35,10 @@ public class GameState : MonoBehaviour
     
     //[SerializeField] private AudioSource playerDamageSound;
     [SerializeField] private float timeSpeedUpMultiplier = 1.0f;
+    [SerializeField] private int maxScoreToWin = 100;
+    private int _currentScore = 0;
 
+    public int GameScore { get { return _currentScore; } }
 
     [Header("Difficulty Params")]
     [SerializeField] private float _boxMalfunctionChance_Normal = 0.1f;
@@ -225,6 +228,16 @@ public class GameState : MonoBehaviour
 
 
         Debug.Log("time has been succesfully changed!");
+    }
+
+    public void IncrementScore()
+    {
+        _currentScore++;
+    }
+
+    public void DecrementScore()
+    {
+        _currentScore--;
     }
 }
 

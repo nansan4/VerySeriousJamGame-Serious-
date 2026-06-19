@@ -85,4 +85,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("initially spawning boxes");
         DeliveryManager.Instance.SpawnDeliverables();
     }
+
+    public void IncrementScore()
+    {
+        gameState.IncrementScore();
+    }
+
+    public void DecrementScore()
+    {
+        gameState.DecrementScore();
+    }
 }

@@ -3,17 +3,17 @@ using System.Collections;
 
 public class DeliverySurface : MonoBehaviour
 {
-    [SerializeField] private Transform deliveryMarkerTransform;
     [SerializeField] private float rejectionTime = 10f;
+    private bool _alreadyRejected = false;
 
-    public Transform DeliveryTransform { get { return deliveryMarkerTransform; } }
+    public Transform DeliveryTransform { get { return transform; } }
 
     public void DeliverySequence()
     {
         //play animations, fx, sounds, etc. here
         Debug.Log("Correct surface!");
 
-        DeliveryManager.Instance.ChangeScore(false); //increase score
+        DeliveryManager.Instance.IncrementScore();
         DeliveryManager.Instance.SpawnDeliverables();
     }
 
@@ -22,7 +22,7 @@ public class DeliverySurface : MonoBehaviour
         //play reject sound, change mat, etc. here
         Debug.Log("wrong surface!");
 
-        StartCoroutine(RejectCooldown());
+        if(!_alreadyRejected) StartCoroutine(RejectCooldown());
     }
 
     private IEnumerator RejectCooldown()

@@ -1,15 +1,22 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class DeliveryManager : MonoBehaviour
 {
     private static DeliveryManager _instance = null; //static/global reference to the single instance of the object because singleton pattern
     public static DeliveryManager Instance { get { return _instance; } } //safe way for other objects to reference GameManager without changing the ref
 
+    public int GlobalBoxCount { get {  return _boxCount; } }
+    public int GlobalBoxMaximum { get {  return maxBoxesAllowed; } }
+
     [SerializeField] private List<ObjectSpawner> objectSpawners = new List<ObjectSpawner>();
     [SerializeField] private List<DeliverySurface> deliverySurfaces = new List<DeliverySurface>();
     [SerializeField] private int maxBoxesToSpawn = 3;
+    [SerializeField] private int maxBoxesAllowed = 1;
 
+    private int _boxCount = 0;
     private Transform _marker;
 
     private void Awake()
@@ -49,30 +56,56 @@ public class DeliveryManager : MonoBehaviour
         return _marker;
     }
 
-    public void ChangeScore(bool decrement)
+    public void IncrementScore()
     {
-        if (decrement)
+        GameManager.Instance.IncrementScore();
+    }
+
+    public void DecrementScore()
+    {
+        GameManager.Instance.DecrementScore();
+    }
+
+    public void IncrementBoxCount()
+    {
+        _boxCount++;
+    }
+
+    public void DecrementBoxCount()
+    {
+        _boxCount--;
+
+        if( _boxCount <= 0)
         {
-            //decrement func in GM
-        }
-        else
-        {
-            //increment func in GM
+            _boxCount = 0;
+            Debug.Log("box count is 0, spawning more boxes");
+            SpawnDeliverables();
         }
     }
 
     public void SpawnDeliverables()
     {
+        StartCoroutine(SpawnRoutine());
+    }
+
+    private IEnumerator SpawnRoutine()
+    {
         int rand = Random.Range(1, maxBoxesToSpawn + 1);
+        //rand = Mathf.Clamp(rand, 0, objectSpawners.Count);
         int count = 0;
         int idx = 0;
 
-        while (count <= rand)
+        yield return null;
+
+        while (count < rand)
         {
             objectSpawners[idx].SpawnDeliverable();
             idx = (idx + 1) % objectSpawners.Count;
             count++;
+            yield return null;
         }
+
+        yield return null;
     }
     
 }
