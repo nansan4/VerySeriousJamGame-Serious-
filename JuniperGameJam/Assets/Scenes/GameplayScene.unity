@@ -255,7 +255,7 @@ MonoBehaviour:
   breakForceThreshold: 1
   malfunctionMultiplier: 1
   despawnWaitTime: 1
-  enableDebug: 0
+  enableDebug: 1
 --- !u!54 &146742460
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1422,7 +1422,7 @@ MonoBehaviour:
   breakForceThreshold: 1
   malfunctionMultiplier: 1
   despawnWaitTime: 1
-  enableDebug: 0
+  enableDebug: 1
 --- !u!54 &1256407349
 Rigidbody:
   m_ObjectHideFlags: 0

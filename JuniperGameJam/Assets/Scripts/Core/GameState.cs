@@ -40,10 +40,21 @@ public class GameState : MonoBehaviour
     [Header("Difficulty Params")]
     [SerializeField] private float _boxMalfunctionChance_Normal = 0.1f;
     [SerializeField] private float _boxMalfunctionChance_Hard = 0.45f;
+
+    [SerializeField] private float _boxInvalidityTime_Normal = 60f;
+    [SerializeField] private float _boxInvalidityTime_Hard = 30f;
+
+    [SerializeField] private float _initialSpawnDelayTime_Normal = 5f;
+    [SerializeField] private float _initialSpawnDelayTime_Hard = 5f;
+
     private float _boxMalfunctionChance;
+    private float _boxInvalidityTime;
+    [SerializeField] private float _initialSpawnDelayTime;
 
     #region DifficultyGetters
     public float BoxMalfunctionChance { get { return  _boxMalfunctionChance; } }
+    public float BoxInvalidityTime { get { return _boxInvalidityTime; } }
+    public float InitialSpawnDelayTime { get  { return _initialSpawnDelayTime; } }
 
     #endregion
 

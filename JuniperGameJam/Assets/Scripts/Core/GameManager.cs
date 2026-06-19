@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameState = GameState.Instance;
+
+        StartCoroutine(InitialSpawnRoutine());
     }
 
     public void PauseGame()
@@ -75,5 +77,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Setting status to: {newStatus}");
         gameState.SetGameStatus(newStatus);
+    }
+
+    private IEnumerator InitialSpawnRoutine()
+    {
+        yield return new WaitForSeconds(gameState.InitialSpawnDelayTime);
+        Debug.Log("initially spawning boxes");
+        DeliveryManager.Instance.SpawnDeliverables();
     }
 }

@@ -19,22 +19,26 @@ public class DeliverableObject : MonoBehaviour
     [Header("DEBUG")]
     [SerializeField] private bool enableDebug = false;
 
-    private float _currentMalfunctionChance;
     private MeshRenderer _meshRenderer;
     private bool _isOnSurface = false;
     private bool _isOffHook = false;
     private bool _isDelivered = false;
+    private float _currentMalfunctionChance;
+    private GameObject _destination;
+    private float _invalidityTime;
 
     private void Start()
     {
         _currentMalfunctionChance = GameState.Instance.BoxMalfunctionChance * malfunctionMultiplier;
+        _invalidityTime = GameState.Instance.BoxInvalidityTime;
 
         _meshRenderer = gameObject.GetComponent<MeshRenderer>();
 
         _isDelivered = enableDebug ? true : false;
         if (_isDelivered) CheckDelivery();
-    }
 
+        StartCoroutine(InvalidityRoutine());
+    }
 
     //is delivered? : 
     //on coll enter with the deliver surface && trigger not overlap with object on hook layer
@@ -47,7 +51,7 @@ public class DeliverableObject : MonoBehaviour
             BreakDeliverable();
         }
 
-        if(collision.collider.CompareTag("Delivery Surface"))
+        if(collision.collider.CompareTag("Delivery Surface") && collision.gameObject == _destination)
         {
             _isOnSurface = true;
         }
@@ -77,9 +81,19 @@ public class DeliverableObject : MonoBehaviour
         }
     }
 
+    private IEnumerator InvalidityRoutine()
+    {
+        yield return new WaitForSeconds(_invalidityTime);
+
+        DeliveryManager.Instance.ChangeScore(true); //decrement score for missed box
+        //pass reason to ui manager to display
+
+        PrepareBoxDestroy();
+    }
     private void BreakDeliverable()
     {
         Debug.Log("Box broke!");
+        //pass reason to UI manager here also
 
         PrepareBoxDestroy();
     }
@@ -104,6 +118,10 @@ public class DeliverableObject : MonoBehaviour
                 //or play anim here
             }
 
+            // minimal components + not happening often = prolly not a big issue
+            DeliverySurface surface = _destination.GetComponent<DeliverySurface>();
+            surface.DeliverySequence();
+
             StartCoroutine(DespawnRoutine());
         }
     }
@@ -124,5 +142,11 @@ public class DeliverableObject : MonoBehaviour
 
         BoxCleanupManager.Instance.AddObjectToDestroy(gameObject);
 
+    }
+
+    public void SetDestination(GameObject destination)
+    {
+        //set game object so i can compare object with collision detection
+        _destination = destination;
     }
 }
