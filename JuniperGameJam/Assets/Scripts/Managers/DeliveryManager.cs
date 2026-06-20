@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// the delivery manager manages sending spawn commands to the object spawners, setting delivery destinations, handling box count, and passing score changes
+/// </summary>
 public class DeliveryManager : MonoBehaviour
 {
     private static DeliveryManager _instance = null; //static/global reference to the single instance of the object because singleton pattern
@@ -13,6 +16,8 @@ public class DeliveryManager : MonoBehaviour
 
     [SerializeField] private List<ObjectSpawner> objectSpawners = new List<ObjectSpawner>();
     [SerializeField] private List<DeliverySurface> deliverySurfaces = new List<DeliverySurface>();
+
+    //should probably fold these into the GameState difficulty system
     [SerializeField] private int maxBoxesToSpawn = 3;
     [SerializeField] private int maxBoxesAllowed = 1;
 
@@ -36,7 +41,7 @@ public class DeliveryManager : MonoBehaviour
     }
     
     /// <summary>
-    /// call this in the object spawner, obj is the object that is being spawned
+    /// call this in the object spawner, obj is the object that is being spawned, surface is the index in the DeliveryManager's deliverySurfaces array, default is -1 (random)
     /// </summary>
     public Transform SetDeliveryDestination(DeliverableObject obj, int surface = -1)
     {

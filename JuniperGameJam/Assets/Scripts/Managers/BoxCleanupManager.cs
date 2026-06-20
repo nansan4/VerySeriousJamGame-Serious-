@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// This is the object pool for the DeliverableObjects the player is dealing with, it handles destroying objects after a certain number are added
+/// </summary>
 public class BoxCleanupManager : MonoBehaviour
 {
     private static BoxCleanupManager _instance = null; //static/global reference to the single instance of the object because singleton pattern
@@ -37,6 +40,7 @@ public class BoxCleanupManager : MonoBehaviour
             {
                 if(go != null) Destroy(go);
             }
+            _toDestroy.Clear();
         }
     }
 }

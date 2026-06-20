@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
+/// <summary>
+/// this is what spawns the deliverables
+/// </summary>
 public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField] private Transform spawnTransform;

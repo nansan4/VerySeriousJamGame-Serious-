@@ -160,9 +160,10 @@ MonoBehaviour:
   hookLoop: {fileID: 3962063779486454970}
   mat: {fileID: 2100000, guid: 51922b5662c42b545a86de33dc2f0955, type: 2}
   isFragile: 0
+  deliverAnywhere: 0
   breakForceThreshold: 1
-  malfunctionMultiplier: 1
-  despawnWaitTime: 5
+  malfunctionAdditive: 0
+  despawnWaitTime: 3
   enableDebug: 1
 --- !u!1 &3962063779486454970
 GameObject:

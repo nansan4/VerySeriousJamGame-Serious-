@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Players place DeliverableObjects onto this object type, it handles its own effects and sends a spawn event when a package is delivered
+/// </summary>
 public class DeliverySurface : MonoBehaviour
 {
     [SerializeField] private float rejectionTime = 10f;

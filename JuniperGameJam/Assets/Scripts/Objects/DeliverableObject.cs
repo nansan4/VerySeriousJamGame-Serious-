@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// The objects the player is delivering, it handles it's own delivery, disabling, and adding to object pool 
+/// </summary>
 public class DeliverableObject : MonoBehaviour
 {
     [Header("Component Refs")]
@@ -12,8 +15,10 @@ public class DeliverableObject : MonoBehaviour
 
     [Header("Instance Vars")]
     [SerializeField] private bool isFragile = false;
+    [SerializeField] private bool deliverAnywhere = false;
     [SerializeField] private float breakForceThreshold = 1f;
-    [SerializeField] private float malfunctionMultiplier = 1f;
+    [Tooltip("percent change to add to the malfunction chance, 1 is effectivley guaranteed (0 base + 1 = 1) and -1 means it will never happen (1 base - 1 = 0)")]
+    [SerializeField][Range(-1f, 1f)] private float malfunctionAdditive = 0f;
     [SerializeField] private float despawnWaitTime = 15f;
 
     [Header("DEBUG")]
@@ -28,7 +33,7 @@ public class DeliverableObject : MonoBehaviour
 
     private void Start()
     {
-        _currentMalfunctionChance = GameState.Instance.BoxMalfunctionChance * malfunctionMultiplier;
+        _currentMalfunctionChance = GameState.Instance.BoxMalfunctionChance + malfunctionAdditive;
         //_invalidityTime = GameState.Instance.BoxInvalidityTime;
         _invalidityTime = 45f;
 
@@ -51,12 +56,13 @@ public class DeliverableObject : MonoBehaviour
             return;
         }
 
-        if(collision.collider.CompareTag("Delivery Surface") && collision.gameObject == _destination)
+        if(collision.collider.CompareTag("Delivery Surface") && (collision.gameObject == _destination || deliverAnywhere))
         {
             _isOnSurface = true;
 
             CheckDelivery();
-        }else if(collision.collider.CompareTag("Delivery Surface") && collision.gameObject != _destination)
+        }
+        else if(collision.collider.CompareTag("Delivery Surface") && collision.gameObject != _destination)
         {
             collision.collider.gameObject.TryGetComponent<DeliverySurface>(out DeliverySurface surface);
             if (surface) surface.RejectSequence();
@@ -156,6 +162,7 @@ public class DeliverableObject : MonoBehaviour
     private void PrepareBoxDestroy()
     {
         Debug.Log("preparing box for destruction");
+        hookLoop.SetActive(false);
         _meshRenderer.enabled = false;
         col.enabled = false;
         StopCoroutine(InvalidityRoutine());
