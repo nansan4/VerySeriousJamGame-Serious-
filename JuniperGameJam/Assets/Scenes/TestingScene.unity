@@ -1286,8 +1286,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 390616021953875674, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 390616021953875674, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 390616021953875674, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 863280097423264379, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_Mass
@@ -1298,8 +1306,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 863280097423264379, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 863280097423264379, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 863280097423264379, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1139739648778458020, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_UseLimits
@@ -1334,8 +1350,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2019302507569527266, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019302507569527266, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019302507569527266, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2243380352625713171, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_Mass
@@ -1346,8 +1370,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2243380352625713171, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243380352625713171, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243380352625713171, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2892918558215268802, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_Name
@@ -1362,8 +1394,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3260287977080474851, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260287977080474851, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260287977080474851, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3283360449323001259, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_UseLimits
@@ -1398,8 +1438,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4403252937572618694, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403252937572618694, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403252937572618694, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4414006250813989044, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_UseLimits
@@ -1482,8 +1530,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5790453743770345844, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5790453743770345844, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5790453743770345844, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6176424850302498738, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_UseLimits
@@ -1610,8 +1666,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7362626010184396606, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362626010184396606, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362626010184396606, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7658914335319688446, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_UseLimits
@@ -1646,8 +1710,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7769677576391347644, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769677576391347644, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769677576391347644, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8087229965101356090, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_LocalScale.x
@@ -1698,8 +1770,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8905788124214626505, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905788124214626505, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905788124214626505, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8973622062635733350, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_Mass
@@ -1710,8 +1790,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8973622062635733350, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973622062635733350, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973622062635733350, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9098826147625614637, guid: 341758d6b9ddc1b4984bbf7f8db6a13e, type: 3}
       propertyPath: m_UseLimits
@@ -1763,6 +1851,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3269812410646758873}
     m_Modifications:
+    - target: {fileID: 4743139774865598499, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743139774865598499, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4814128331085247554, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00010001865

@@ -171,9 +171,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!82 &4097780158357481901
 AudioSource:
   m_ObjectHideFlags: 0
@@ -294,11 +294,10 @@ MonoBehaviour:
   maxWalkSpeed: 5.5
   maxVerticalSpeed: 3.5
   minimumWorldHeight: 0.5
-  jumpForce: 17
+  jumpForce: 30
   OnCharacterJump:
     m_PersistentCalls:
       m_Calls: []
   groundRotationRate: 5
   cameraTransform: {fileID: 0}
   mainCamera: {fileID: 0}
-  altCamera: {fileID: 0}
