@@ -7,9 +7,11 @@ using System.Collections;
 public class DeliverySurface : MonoBehaviour
 {
     [SerializeField] private float rejectionTime = 10f;
+    [SerializeField] private Transform markerTransform;
     private bool _alreadyRejected = false;
 
     public Transform DeliveryTransform { get { return transform; } }
+    public Transform MarkerTransform { get { return markerTransform; } }
 
     public void DeliverySequence()
     {

@@ -9,7 +9,7 @@ public class DeliverableObject : MonoBehaviour
     [Header("Component Refs")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Collider col;
-    [SerializeField] private Collider detectionTrigger;
+    [SerializeField] private Collider hookDetectionTrigger;
     [SerializeField] private GameObject hookLoop;
     [SerializeField] private Material mat;
 
@@ -162,9 +162,13 @@ public class DeliverableObject : MonoBehaviour
     private void PrepareBoxDestroy()
     {
         Debug.Log("preparing box for destruction");
+        //disable object components
         hookLoop.SetActive(false);
         _meshRenderer.enabled = false;
         col.enabled = false;
+        rb.useGravity = false;
+        hookDetectionTrigger.enabled = false;
+
         StopCoroutine(InvalidityRoutine());
         DeliveryManager.Instance.DecrementBoxCount();
 

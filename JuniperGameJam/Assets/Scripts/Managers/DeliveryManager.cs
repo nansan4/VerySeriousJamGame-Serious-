@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR;
 
 /// <summary>
 /// the delivery manager manages sending spawn commands to the object spawners, setting delivery destinations, handling box count, and passing score changes
@@ -22,6 +23,7 @@ public class DeliveryManager : MonoBehaviour
     [SerializeField] private int maxBoxesAllowed = 1;
 
     private int _boxCount = 0;
+    private Transform _destination;
     private Transform _marker;
 
     private void Awake()
@@ -48,17 +50,20 @@ public class DeliveryManager : MonoBehaviour
         if (surface < 0)
         {
             int rand = Random.Range(0, deliverySurfaces.Count);
-            _marker = deliverySurfaces[rand].DeliveryTransform;
+            _destination = deliverySurfaces[rand].DeliveryTransform;
+            _marker = deliverySurfaces[rand].MarkerTransform;
         }
         else
         {
-            _marker = deliverySurfaces[surface].DeliveryTransform;
+            _destination = deliverySurfaces[surface].DeliveryTransform;
+            _marker = deliverySurfaces[surface].MarkerTransform;
         }
 
-        //set marker here, likely in a UI manager
+        //pass _marker ref here, likely to a UI manager
+        // smth like UIManager.Instance.AddDestinationMarker(_marker);
 
-        obj.SetDestination(_marker.gameObject);
-        return _marker;
+        obj.SetDestination(_destination.gameObject);
+        return _destination;
     }
 
     public void IncrementScore()
@@ -83,37 +88,57 @@ public class DeliveryManager : MonoBehaviour
         if( _boxCount <= 0)
         {
             _boxCount = 0;
-            Debug.Log("box count is " + _boxCount + ", spawning more boxes");
+            Debug.Log("box count is " + _boxCount + ", force spawning more boxes");
             SpawnDeliverables(true);
         }
     }
 
     public void SpawnDeliverables(bool force)
     {
-        StartCoroutine(SpawnRoutine(force));
+        if(force == true){ StartCoroutine(ForceSpawnRoutine()); }
+        else { StartCoroutine(SpawnRoutine()); }
     }
 
-    private IEnumerator SpawnRoutine(bool force)
+    private IEnumerator SpawnRoutine()
     {
         int rand = Random.Range(1, maxBoxesToSpawn + 1);
-        //rand = Mathf.Clamp(rand, 0, objectSpawners.Count);
-        int count = 0;
         int idx = 0;
+        int count = 0;
         objectSpawners.Shuffle();
 
-        yield return new WaitForNextFrameUnit();
+        yield return new WaitForSeconds(2f);
 
         Debug.Log("about to spawn " + rand + " boxes");
         while (count < rand)
         {
-            if(force && count == 0){ objectSpawners[idx].ForceSpawnDeliverable(); }
-            else { objectSpawners[idx].SpawnDeliverable(); }
-                idx = (idx + 1) % objectSpawners.Count;
+            objectSpawners[idx].SpawnDeliverable();
+            idx = (idx + 1) % objectSpawners.Count;
             count++;
             yield return null;
         }
 
         //Debug.Log("boxes spawned!");
+
+        yield return null;
+    }
+
+    private IEnumerator ForceSpawnRoutine()
+    {
+        int rand = Random.Range(1, maxBoxesToSpawn + 1); //want to include the input max boxes to spawn number
+        int idx = Random.Range(0, objectSpawners.Count); //since max of random.range is exclusive
+        int count = 0;
+
+        yield return new WaitForSeconds(10f);
+
+        Debug.Log("about to spawn " + rand + " boxes");
+
+        while(count < rand)
+        {
+            objectSpawners[idx].ForceSpawnDeliverable();
+            idx = (idx + 1) % objectSpawners.Count;
+            count++;
+            yield return null;
+        }
 
         yield return null;
     }

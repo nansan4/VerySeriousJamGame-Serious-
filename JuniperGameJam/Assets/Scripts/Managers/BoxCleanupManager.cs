@@ -41,6 +41,8 @@ public class BoxCleanupManager : MonoBehaviour
                 if(go != null) Destroy(go);
             }
             _toDestroy.Clear();
+
+            Debug.Log("destroyed objects, items in destruction list: " + _toDestroy.Count);
         }
     }
 }
