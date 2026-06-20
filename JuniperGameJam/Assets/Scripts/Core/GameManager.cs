@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(gameState.InitialSpawnDelayTime);
         Debug.Log("initially spawning boxes");
-        DeliveryManager.Instance.SpawnDeliverables();
+        DeliveryManager.Instance.SpawnDeliverables(true);
     }
 
     public void IncrementScore()

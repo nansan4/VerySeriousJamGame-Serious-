@@ -22,7 +22,6 @@ public class DeliverableObject : MonoBehaviour
     private MeshRenderer _meshRenderer;
     private bool _isOnSurface = false;
     private bool _isOffHook = false;
-    private bool _isDelivered = false;
     private float _currentMalfunctionChance;
     private GameObject _destination;
     private float _invalidityTime;
@@ -104,6 +103,7 @@ public class DeliverableObject : MonoBehaviour
     {
         Debug.Log("Box broke!");
         //pass reason to UI manager here also
+        DeliveryManager.Instance.DecrementScore();
 
         PrepareBoxDestroy();
     }
@@ -114,7 +114,6 @@ public class DeliverableObject : MonoBehaviour
         if((_isOnSurface && _isOffHook) || enableDebug)
         {
             Debug.Log("box is delivered!");
-            _isDelivered = true;
 
             float mal = Random.Range(0.0f, 1.0f);
 

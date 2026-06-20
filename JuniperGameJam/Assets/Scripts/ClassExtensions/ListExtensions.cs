@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public static class ListExtensions
 {
     /// <summary>
-    /// Shuffles the elements of a given list, modifies base list
+    /// Shuffles the elements of a given list, modifies input list and does not return a new version
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>

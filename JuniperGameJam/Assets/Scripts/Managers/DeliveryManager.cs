@@ -78,32 +78,37 @@ public class DeliveryManager : MonoBehaviour
         if( _boxCount <= 0)
         {
             _boxCount = 0;
-            Debug.Log("box count is 0, spawning more boxes");
-            SpawnDeliverables();
+            Debug.Log("box count is " + _boxCount + ", spawning more boxes");
+            SpawnDeliverables(true);
         }
     }
 
-    public void SpawnDeliverables()
+    public void SpawnDeliverables(bool force)
     {
-        StartCoroutine(SpawnRoutine());
+        StartCoroutine(SpawnRoutine(force));
     }
 
-    private IEnumerator SpawnRoutine()
+    private IEnumerator SpawnRoutine(bool force)
     {
         int rand = Random.Range(1, maxBoxesToSpawn + 1);
         //rand = Mathf.Clamp(rand, 0, objectSpawners.Count);
         int count = 0;
         int idx = 0;
+        objectSpawners.Shuffle();
 
-        yield return null;
+        yield return new WaitForNextFrameUnit();
 
+        Debug.Log("about to spawn " + rand + " boxes");
         while (count < rand)
         {
-            objectSpawners[idx].SpawnDeliverable();
-            idx = (idx + 1) % objectSpawners.Count;
+            if(force && count == 0){ objectSpawners[idx].ForceSpawnDeliverable(); }
+            else { objectSpawners[idx].SpawnDeliverable(); }
+                idx = (idx + 1) % objectSpawners.Count;
             count++;
             yield return null;
         }
+
+        //Debug.Log("boxes spawned!");
 
         yield return null;
     }

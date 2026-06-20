@@ -233,6 +233,13 @@ public class GameState : MonoBehaviour
     public void IncrementScore()
     {
         _currentScore++;
+        Debug.Log("GameState score: " + _currentScore);
+
+        if(_currentScore >= maxScoreToWin)
+        {
+            //start win sequence
+            OnWin?.Invoke();
+        }
     }
 
     public void DecrementScore()

@@ -11,16 +11,16 @@ public class DeliverySurface : MonoBehaviour
     public void DeliverySequence()
     {
         //play animations, fx, sounds, etc. here
-        Debug.Log("Correct surface!");
+        Debug.Log("delivery sequence");
 
         DeliveryManager.Instance.IncrementScore();
-        DeliveryManager.Instance.SpawnDeliverables();
+        DeliveryManager.Instance.SpawnDeliverables(false);
     }
 
     public void RejectSequence()
     {
         //play reject sound, change mat, etc. here
-        Debug.Log("wrong surface!");
+        Debug.Log("rejection sequence");
 
         if(!_alreadyRejected) StartCoroutine(RejectCooldown());
     }

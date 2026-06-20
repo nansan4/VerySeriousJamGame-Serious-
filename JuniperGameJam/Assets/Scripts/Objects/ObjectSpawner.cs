@@ -20,7 +20,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (_hasObjectSpawned || _isOnCooldown || DeliveryManager.Instance.GlobalBoxCount + 1 > DeliveryManager.Instance.GlobalBoxMaximum)
         {
-            Debug.Log("Not going to spawn object: Spawner already has object on spawn pad, is cooling down, or would exceed max box count");
+            Debug.Log("Not going to spawn object: Spawner already has object on spawn pad, is cooling down, or would exceed max box count: count is currently " + DeliveryManager.Instance.GlobalBoxCount);
             return;
         }
         else
@@ -33,6 +33,20 @@ public class ObjectSpawner : MonoBehaviour
 
             StartCoroutine(CooldownRoutine());
         }
+    }
+
+    public void ForceSpawnDeliverable()
+    {
+        if (_hasObjectSpawned) return; //don't want to force two boxes into each other
+
+        Debug.LogWarning("forcing deliverable spawns");
+        DeliverableObject obj = Instantiate(prefabDeliverables.GetRandomItem(), spawnTransform.position, Quaternion.identity);
+        Transform dest = DeliveryManager.Instance.SetDeliveryDestination(obj);
+        Debug.Log("spawning object: " + obj + ", at: " + spawnTransform.position + ", for destination: " + dest.position);
+        _hasObjectSpawned = true;
+        DeliveryManager.Instance.IncrementBoxCount();
+
+        StartCoroutine(CooldownRoutine());
     }
 
     private IEnumerator CooldownRoutine()
