@@ -28,7 +28,7 @@ public class GameState : MonoBehaviour
 
     [SerializeField] private CinemachineImpulseSource _impulseSource;
 
-    protected GameStatus currentGameStatus = GameStatus.Initializing; //represents progress status of the game
+    [SerializeField] protected GameStatus currentGameStatus = GameStatus.Initializing; //represents progress status of the game
     public GameStatus CurrentGameStatus { get { return currentGameStatus; } }
 
     //declare game-specific info HERE(lives, timer, etc.)
@@ -253,6 +253,7 @@ public enum GameStatus
 {
     Initializing,   //init
     InProgress,     //playing game
+    Paused,
     PlayerWon,      //game over
     PlayerLost      //game over
 }
