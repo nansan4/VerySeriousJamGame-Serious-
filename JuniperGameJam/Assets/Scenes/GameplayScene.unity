@@ -755,12 +755,12 @@ MonoBehaviour:
   rb: {fileID: 524902095}
   audioSource: {fileID: 524902094}
   characterModel: {fileID: 1720210456}
+  movementDirection: {x: 0, y: 0, z: 0}
   accelerationRate: 6
   decelerationRate: 5
   maxWalkSpeed: 5.5
   maxVerticalSpeed: 3.5
   minimumWorldHeight: 0.5
-  currentWorldHeight: 0
   jumpForce: 10
   jumpForceAcceleration: 0.045
   jumpForceDeceleration: 0.0075
@@ -771,6 +771,7 @@ MonoBehaviour:
   idleBobSpeed: 1.6
   bobBlendSpeed: 5
   groundRotationRate: 5
+  responsiveness: 5
   cameraTransform: {fileID: 1472704077}
   mainCamera: {fileID: 0}
 --- !u!82 &524902094
@@ -880,7 +881,7 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0.7
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -895,7 +896,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!65 &524902096
 BoxCollider:
