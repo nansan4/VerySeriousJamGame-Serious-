@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using Unity.Cinemachine;
 using NUnit.Framework;
 using System;
+using Unity.VisualScripting;
 
 public class PlayerMovement : BaseMovement
 {
@@ -11,7 +12,7 @@ public class PlayerMovement : BaseMovement
     [Space(20)]
 
     [Header("Character - Ground Movement")]
-    protected Vector3 movementDirection;                        // The interpreted 3D direction in which this character should move.
+    [SerializeField] protected Vector3 movementDirection;                        // The interpreted 3D direction in which this character should move.
     [SerializeField] private float accelerationRate = 60f;      // The speed at which this character accelerates in m/s
     [SerializeField] private float decelerationRate = 12f;      // The speed at which this character decelerates in m/s
     [SerializeField] private float maxWalkSpeed = 1f;           // The max horizontal speed of this character (when walking) in m/s
@@ -36,6 +37,7 @@ public class PlayerMovement : BaseMovement
 
     [Header("Character - Rotation")]
     [SerializeField] private float groundRotationRate = 10f;    // The rate at which the player rotates (when grounded)
+    [SerializeField] private float responsiveness = 5f;
 
     [Header("Character - Camera")]
     [SerializeField] private Transform cameraTransform;         // The transform component of our Character's Camera
@@ -148,6 +150,10 @@ public class PlayerMovement : BaseMovement
         {
             //apply force as acceleration, constant regardless of mass
             rb.AddForce(movementDirection * accelerationRate, ForceMode.Acceleration);
+
+            rb.AddTorque(transform.right * movementDirection.normalized.z * responsiveness); //pitch
+            rb.AddTorque(transform.forward * movementDirection.normalized.x * responsiveness); //roll
+            rb.AddTorque(transform.up * movementDirection.normalized.y * responsiveness); //yaw
         }
         else if (movementDirection == Vector3.zero) //if we aren't trying to move
         {
@@ -158,6 +164,14 @@ public class PlayerMovement : BaseMovement
                 Vector3 counteractDirection = currentVelocity.normalized * -1f; //get direction w/o magnitute
                 rb.AddForce(counteractDirection * decelerationRate, ForceMode.Acceleration);
             }
+
+            Vector3 modelEuler = characterModel.transform.rotation.eulerAngles;
+            Quaternion modelTargetRotation = Quaternion.Euler(0f, modelEuler.y, 0f);
+            characterModel.transform.rotation = Quaternion.Slerp(characterModel.transform.rotation, modelTargetRotation, groundRotationRate * Time.fixedDeltaTime);
+
+            Vector3 bodyEuler = transform.rotation.eulerAngles;
+            Quaternion bodyTargetRotation = Quaternion.Euler(0f, bodyEuler.y, 0f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, bodyTargetRotation, groundRotationRate * Time.fixedDeltaTime);
         }
 
         //set player position to minimum world height
@@ -289,6 +303,8 @@ public class PlayerMovement : BaseMovement
 
         Vector3 verticalDirection = rb.linearVelocity.y < 0f ? Vector3.up : Vector3.down;
         rb.AddForce(verticalDirection * adjustedJumpForce, ForceMode.Acceleration);
+
+        
     }
 
     // Tell the character to start sprinting

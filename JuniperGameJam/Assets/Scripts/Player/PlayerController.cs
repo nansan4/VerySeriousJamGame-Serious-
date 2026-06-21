@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     #region Variables
 
     [Header("Player Input")]
-    private InputSystem_Actions playerInputActions; // This is the object that listens for inputs at the hardware level
+    public InputSystem_Actions playerInputActions; // This is the object that listens for inputs at the hardware level
     private Vector2 movementInput;
 
     [Header("Component / Object References")]
@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         // GameState callback listeners (call in Start to ensure GameState.Instance is ready)
         GameState.Instance.OnGamePaused.AddListener(OnGamePausedReceived);
         GameState.Instance.OnGameResumed.AddListener(OnGameResumedReceived);
+        GameState.Instance.SetGameStatus(GameStatus.InProgress); // Set the game status to InProgress at the start of the game
     }
 
     private void OnEnable()
@@ -109,11 +110,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="newActionMap">The ActionMap we want to switch to, or null to disable all ActionMaps.</param>
     /// <param name="showCursor">Whether or not to show/unlock the cursor.</param>
-    private void SwitchActionMap(InputActionMap newActionMap = null, bool showCursor = false)
+    public void SwitchActionMap(InputActionMap newActionMap = null, bool showCursor = false)
     {
         // Disable all action maps
         playerInputActions.Player.Disable();
         playerInputActions.UI.Disable();
+        playerInputActions.Paused.Disable();
 
         // Enable the new action map (if it exists) and configure the cursor
         if (newActionMap != null) { newActionMap.Enable(); }
@@ -173,11 +175,13 @@ public class PlayerController : MonoBehaviour
     private void OnGamePausedReceived()
     {
         SwitchActionMap(playerInputActions.UI, true);
+        GameState.Instance.SetGameStatus(GameStatus.Paused);
     }
 
     private void OnGameResumedReceived()
     {
-        SwitchActionMap(playerInputActions.Player);
+        SwitchActionMap(playerInputActions.Player, false);
+        GameState.Instance.SetGameStatus(GameStatus.InProgress);
     }
 
     #endregion
