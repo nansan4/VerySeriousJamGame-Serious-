@@ -39,7 +39,17 @@ public abstract class BaseMovement : MonoBehaviour
         //do nothing
     }
 
+    public virtual void Fall() //Reduce height
+    {
+        //do nothing
+    }
+
     public virtual void CancelLaunch()
+    {
+        //do nothing
+    }
+
+    public virtual void CancelFall()
     {
         //do nothing
     }

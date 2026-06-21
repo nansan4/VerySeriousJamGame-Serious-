@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.Cinemachine;
+using NUnit.Framework;
+using System;
 
 public class PlayerMovement : BaseMovement
 {
@@ -20,8 +20,19 @@ public class PlayerMovement : BaseMovement
 
     [Header("Character - Air Movement")]
     [SerializeField] protected float jumpForce = 6f;            // The amount of power used by this character to jump.
+    [SerializeField] [UnityEngine.Range(0f,1f)] protected float jumpForceAcceleration = 0.015f;
+    private float currentJFA = 0f;
+    [SerializeField] [UnityEngine.Range(0f,1f)] protected float jumpForceDeceleration = 0.015f;
+    private float currentJFD = 0f;
     public UnityEvent OnCharacterJump;                          // Event that fires when the character jumps
-    private bool isJumping = false;
+    private bool isGainingHeight = false;
+    private bool isReducingHeight = false;
+    private bool isReducingVerticalSpeed = false;
+    private bool isGainingVerticalSpeed = false;
+    [SerializeField] private float idleBobAmount = 0.2f;
+    [SerializeField] [UnityEngine.Range(0,2)] private float idleBobSpeed = 1.2f;
+    private float currentBobOffset = 0f;
+[SerializeField] private float bobBlendSpeed = 5f;
 
     [Header("Character - Rotation")]
     [SerializeField] private float groundRotationRate = 10f;    // The rate at which the player rotates (when grounded)
@@ -39,12 +50,6 @@ public class PlayerMovement : BaseMovement
     //[Header("Audio Sources")]
     //[SerializeField] private AudioSource jumpSource;
     //[SerializeField] private AudioSource landSource;
-    //[SerializeField] private AudioSource runningSource;
-    //[SerializeField] private AudioSource camSwitchSource;
-
-    //[SerializeField] private float walkPitch = .6f;
-    //[SerializeField] private float runPitch = 1.0f;
-
 
     #endregion
 
@@ -73,11 +78,17 @@ public class PlayerMovement : BaseMovement
         //apply any character movement
         Move();
 
-        JumpFunc();
+        GainHeight();
+        ReduceHeight();
+        if (!isGainingHeight && !isReducingHeight)
+        {
+            ReduceVerticalSpeed();
+        }
 
         //make sure we limit out speed AFTER we start to speed
         LimitVelocity();
-
+        if (currentJFA < 0){currentJFA = 0;}
+        if (currentJFD < 0){currentJFD = 0;}
     }
 
     private void Update()
@@ -97,7 +108,7 @@ public class PlayerMovement : BaseMovement
     // Receive movement input from the PlayerController
     public override void SetMovementInput(Vector2 moveInput)
     {
-            base.SetMovementInput(moveInput); //call parent implementation of this func
+        base.SetMovementInput(moveInput); //call parent implementation of this func
 
     }
 
@@ -193,34 +204,91 @@ public class PlayerMovement : BaseMovement
             float counteractAmount = Mathf.Abs(rb.linearVelocity.y) - maxVerticalSpeed;
             rb.AddForce(counteractDirection * counteractAmount, ForceMode.VelocityChange);
         }
+
+        //if the player is idling and not at the set world height, move them to it
+        if (!isReducingHeight && !isGainingHeight && !isReducingVerticalSpeed)
+        {
+            float targetBobOffset = Mathf.Sin(Time.time * idleBobSpeed) * idleBobAmount;
+            currentBobOffset = Mathf.Lerp(currentBobOffset, targetBobOffset, bobBlendSpeed * Time.fixedDeltaTime);
+            Vector3 sinePos = new Vector3(transform.position.x, transform.position.y + currentBobOffset, transform.position.z);
+
+            rb.MovePosition(sinePos);
+        }
     }
 
     // accelerate character upwards, continuous force
     public override void Launch()
     {
-        isJumping = true;
+        isGainingHeight = true;
+        isReducingHeight = false;
+        currentJFD = 0;
     }
 
-    private void JumpFunc()
+    public override void Fall()
     {
-        if (isJumping)
+        isGainingHeight = false;
+        isReducingHeight = true;
+        currentJFD = 0;
+    }
+
+    private void GainHeight()
+    {
+        if (isGainingHeight && !isReducingHeight)
         {
             //jump accounting for pre-existing vertical velocity
-            float adjustedJumpForce = jumpForce - rb.linearVelocity.y;
+            if (currentJFA < 1) currentJFA += jumpForceAcceleration; //JFA = JumpForceAccleration
+            if (currentJFA > 1) currentJFA = 1;
+            float adjustedJumpForce = (jumpForce - rb.linearVelocity.y) * currentJFA;
+            // Debug.Log(adjustedJumpForce);
             rb.AddForce(Vector3.up * adjustedJumpForce, ForceMode.Acceleration);
+        }
+    }
+
+    private void ReduceHeight()
+    {
+        if (isReducingHeight && !isGainingHeight)
+        {
+            if (currentJFA < 1) currentJFA += jumpForceAcceleration;
+            if (currentJFA > 1) currentJFA = 1;
+            float adjustedJumpForce = (jumpForce - rb.linearVelocity.y) * currentJFA;
+            rb.AddForce(Vector3.down * adjustedJumpForce, ForceMode.Acceleration);
         }
     }
 
     // Allow for partial jumps
     public override void CancelLaunch()
     {
-        isJumping = false;
+        isGainingHeight = false;
+        currentJFA = 0;
 
         //if we're still moving upwards, cut vertical velocity in half
         //if (rb.linearVelocity.y > 0f)
         //{
         //    rb.AddForce(Vector3.down * (rb.linearVelocity.y * 0.8f), ForceMode.VelocityChange);
         //}
+    }
+
+    public override void CancelFall()
+    {
+        isReducingHeight = false;
+        currentJFA = 0;
+    }
+
+    private void ReduceVerticalSpeed()
+    {
+        if (rb.linearVelocity.sqrMagnitude < 0.0015f) 
+        {
+            isReducingVerticalSpeed = false;
+            return;
+        }
+        isReducingVerticalSpeed = true;
+
+        if (currentJFD < 1) currentJFD += jumpForceDeceleration;
+        if (currentJFD > 1) currentJFD = 1;
+        float adjustedJumpForce = (jumpForce - rb.linearVelocity.y) * currentJFD;
+
+        Vector3 verticalDirection = rb.linearVelocity.y < 0f ? Vector3.up : Vector3.down;
+        rb.AddForce(verticalDirection * adjustedJumpForce, ForceMode.Acceleration);
     }
 
     // Tell the character to start sprinting

@@ -760,10 +760,16 @@ MonoBehaviour:
   maxWalkSpeed: 5.5
   maxVerticalSpeed: 3.5
   minimumWorldHeight: 0.5
-  jumpForce: 17
+  currentWorldHeight: 0
+  jumpForce: 10
+  jumpForceAcceleration: 0.045
+  jumpForceDeceleration: 0.0075
   OnCharacterJump:
     m_PersistentCalls:
       m_Calls: []
+  idleBobAmount: 0.005
+  idleBobSpeed: 1.6
+  bobBlendSpeed: 5
   groundRotationRate: 5
   cameraTransform: {fileID: 1472704077}
   mainCamera: {fileID: 0}
@@ -886,7 +892,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112

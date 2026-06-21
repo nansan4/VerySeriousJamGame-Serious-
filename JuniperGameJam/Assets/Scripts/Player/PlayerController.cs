@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
 
         playerInputActions.Player.Launch.performed += LaunchActionPerformed;
         playerInputActions.Player.Launch.canceled += LaunchActionCanceled;
+        playerInputActions.Player.Fall.performed += FallActionPerformed;
+        playerInputActions.Player.Fall.canceled += FallActionCancelled;
 
         playerInputActions.Player.TogglePause.performed += TogglePauseActionPerformed;
         playerInputActions.UI.TogglePause.performed += TogglePauseActionPerformed;
@@ -94,6 +96,8 @@ public class PlayerController : MonoBehaviour
 
         playerInputActions.Player.Launch.performed -= LaunchActionPerformed;
         playerInputActions.Player.Launch.canceled -= LaunchActionCanceled;
+        playerInputActions.Player.Fall.performed -= FallActionPerformed;
+        playerInputActions.Player.Fall.canceled -= FallActionCancelled;
 
         playerInputActions.Player.TogglePause.performed -= TogglePauseActionPerformed;
         playerInputActions.UI.TogglePause.performed -= TogglePauseActionPerformed;
@@ -143,6 +147,16 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("The player is trying to Stop Launching!");
 
         baseMovement.CancelLaunch();
+    }
+
+    private void FallActionPerformed(InputAction.CallbackContext context)
+    {
+        baseMovement.Fall();
+    }
+
+    private void FallActionCancelled(InputAction.CallbackContext context)
+    {
+        baseMovement.CancelFall();
     }
 
     private void TogglePauseActionPerformed(InputAction.CallbackContext context)
