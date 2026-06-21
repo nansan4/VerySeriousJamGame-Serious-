@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 126770787353143095}
   - component: {fileID: 2736282567950276404}
   - component: {fileID: 1269820007573061258}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &126770787353143095
 Transform:
   m_ObjectHideFlags: 0
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1050143160336561540}
   - component: {fileID: 4097780158357481901}
   - component: {fileID: 5394537869735704022}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: player test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,6 +124,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 126770787353143095}
+  - {fileID: 5032341406980482465}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6139481201235483996
@@ -169,7 +170,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
@@ -288,16 +289,83 @@ MonoBehaviour:
   collider: {fileID: 6139481201235483996}
   rb: {fileID: 1050143160336561540}
   audioSource: {fileID: 4097780158357481901}
-  characterModel: {fileID: 126770787353143095}
+  characterModel: {fileID: 5032341406980482465}
   accelerationRate: 6
   decelerationRate: 5
   maxWalkSpeed: 5.5
   maxVerticalSpeed: 3.5
   minimumWorldHeight: 0.5
   jumpForce: 30
+  jumpForceAcceleration: 0.015
+  jumpForceDeceleration: 0.015
   OnCharacterJump:
     m_PersistentCalls:
       m_Calls: []
+  idleBobAmount: 0.2
+  idleBobSpeed: 1.2
+  bobBlendSpeed: 5
   groundRotationRate: 5
   cameraTransform: {fileID: 0}
   mainCamera: {fileID: 0}
+--- !u!1001 &7328944001118018416
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2052321443887694415}
+    m_Modifications:
+    - target: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.094
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.108
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566535555563702696, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+      propertyPath: m_Name
+      value: HeliWeights
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+--- !u!4 &5032341406980482465 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2333942565567545041, guid: 2a0e8d1196c428b41a59be8af72acf13, type: 3}
+  m_PrefabInstance: {fileID: 7328944001118018416}
+  m_PrefabAsset: {fileID: 0}
