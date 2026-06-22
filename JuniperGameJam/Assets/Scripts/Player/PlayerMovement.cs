@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.Cinemachine;
-using NUnit.Framework;
-using System;
-using Unity.VisualScripting;
 
 public class PlayerMovement : BaseMovement
 {
@@ -37,7 +34,7 @@ public class PlayerMovement : BaseMovement
 
     [Header("Character - Rotation")]
     [SerializeField] private float groundRotationRate = 10f;    // The rate at which the player rotates (when grounded)
-    [SerializeField] private float responsiveness = 5f;
+    [SerializeField] private float responsiveness = 100f;
     [SerializeField] private float maxPitchAngle = 45f;          // The maximum angle the character can pitch up or down when moving
     [SerializeField] private float maxRollAngle = 45f;           // The maximum angle the character can roll left or right when moving
 
@@ -325,59 +322,24 @@ public class PlayerMovement : BaseMovement
         
     }
 
-    // Tell the character to start sprinting
-
     #endregion
-
-    //#region Ground Checking
-
-    //// Check if the character is on the ground
-    //private void CheckIsGrounded()
-    //{
-    //    //record the grounded status from previous check
-    //    wasGroundedLastFrame = isGrounded;
-
-    //    //calc the origin of the sphere just below the center of the bottom sphere of the capsule collider
-    //    //we assume the origin is at the bottom center of the capsule
-    //    Vector3 p1 = transform.position + (Vector3.up * (capsuleCollider.radius * 0.9f));
-
-    //    //OverlapSphere returns an array of colliders it hits
-    //    Collider[] groundColliders = Physics.OverlapSphere(p1, capsuleCollider.radius * 0.95f, environmentLayerMask); //center of sphere, radius of sphere, environment LayerMask (hittable layers)
-
-    //    //we're on the ground if there's atleast 1 collider under us
-    //    isGrounded = groundColliders.Length > 0;
-
-    //    //if we became grounded this frame
-    //    if (!wasGroundedLastFrame && isGrounded)
-    //    {
-    //        currentJump = 0;
-
-    //        landSource.Play();
-    //    }
-    //    //we became airborne this frame
-    //    else if (wasGroundedLastFrame && !isGrounded)
-    //    {
-    //        //if we didn't jump since jumping would set it to 1
-    //        if (currentJump == 0)
-    //        {
-    //            currentJump += 1; //expend jump when becoming airborne
-    //        }
-    //    }
-    //}
-
-    //#endregion
 
     #endregion
 
     #region Debug
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = isGrounded ? Color.green : Color.red;
-    //    Vector3 p1 = transform.position + (Vector3.up * (capsuleCollider.radius * 0.9f));
+    private void OnDrawGizmos()
+    {
+        //draw movement direction vector
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + movementDirection * 2);
 
-    //    Gizmos.DrawWireSphere(p1, capsuleCollider.radius * 0.95f);
-    //}
+        //draw velocity vector
+        if (rb != null)
+        {Gizmos.color = new Color(0f, 0.5f, 1f); // bright blue
+            Gizmos.DrawLine(transform.position, transform.position + rb.linearVelocity);
+        }
+    }
 
     #endregion  
 
