@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.Cinemachine;
-using NUnit.Framework;
-using System;
-using Unity.VisualScripting;
 
 public class PlayerMovement : BaseMovement
 {
@@ -21,9 +18,9 @@ public class PlayerMovement : BaseMovement
 
     [Header("Character - Air Movement")]
     [SerializeField] protected float jumpForce = 6f;            // The amount of power used by this character to jump.
-    [SerializeField] [UnityEngine.Range(0f,1f)] protected float jumpForceAcceleration = 0.015f;
+    [SerializeField] [Range(0f,1f)] protected float jumpForceAcceleration = 0.015f;
     private float currentJFA = 0f;
-    [SerializeField] [UnityEngine.Range(0f,1f)] protected float jumpForceDeceleration = 0.015f;
+    [SerializeField] [Range(0f,1f)] protected float jumpForceDeceleration = 0.015f;
     private float currentJFD = 0f;
     public UnityEvent OnCharacterJump;                          // Event that fires when the character jumps
     private bool isGainingHeight = false;
@@ -31,13 +28,15 @@ public class PlayerMovement : BaseMovement
     private bool isReducingVerticalSpeed = false;
     private bool isGainingVerticalSpeed = false;
     [SerializeField] private float idleBobAmount = 0.2f;
-    [SerializeField] [UnityEngine.Range(0,2)] private float idleBobSpeed = 1.2f;
+    [SerializeField] [Range(0,2)] private float idleBobSpeed = 1.2f;
     private float currentBobOffset = 0f;
-[SerializeField] private float bobBlendSpeed = 5f;
+    [SerializeField] private float bobBlendSpeed = 5f;
 
     [Header("Character - Rotation")]
     [SerializeField] private float groundRotationRate = 10f;    // The rate at which the player rotates (when grounded)
-    [SerializeField] private float responsiveness = 5f;
+    [SerializeField] private float responsiveness = 0.75f;
+    [SerializeField] private float maxPitchAngle = 45f;          // The maximum angle the character can pitch up or down when moving
+    [SerializeField] private float maxRollAngle = 45f;           // The maximum angle the character can roll left or right when moving
 
     [Header("Character - Camera")]
     [SerializeField] private Transform cameraTransform;         // The transform component of our Character's Camera
@@ -79,6 +78,7 @@ public class PlayerMovement : BaseMovement
 
         //apply any character movement
         Move();
+        ApplyTilt();
 
         GainHeight();
         ReduceHeight();
@@ -150,10 +150,6 @@ public class PlayerMovement : BaseMovement
         {
             //apply force as acceleration, constant regardless of mass
             rb.AddForce(movementDirection * accelerationRate, ForceMode.Acceleration);
-
-            rb.AddTorque(transform.right * movementDirection.normalized.z * responsiveness); //pitch
-            rb.AddTorque(transform.forward * movementDirection.normalized.x * responsiveness); //roll
-            rb.AddTorque(transform.up * movementDirection.normalized.y * responsiveness); //yaw
         }
         else if (movementDirection == Vector3.zero) //if we aren't trying to move
         {
@@ -185,6 +181,7 @@ public class PlayerMovement : BaseMovement
         }
     }
 
+    #region Rotation
     // Rotate the character model to face direction of movement
     protected override void Rotate()
     {
@@ -194,6 +191,24 @@ public class PlayerMovement : BaseMovement
             characterModel.forward = Vector3.Slerp(characterModel.forward, movementDirection.normalized, groundRotationRate * Time.deltaTime);
         }
     }
+
+    /// <summary>
+    /// Tilts the character model based on horizontal velocity to give a sense of momentum and weight. The tilt is applied by calculating the desired pitch and roll angles based on the character's local velocity and then smoothly interpolating the character model's rotation towards these target angles using Slerp for smooth transitions. The responsiveness variable controls how quickly the character tilts in response to changes in velocity, while maxPitchAngle and maxRollAngle limit the maximum tilt angles to prevent excessive tilting. This function is called in FixedUpdate to ensure that the tilt is updated consistently with the physics simulation.
+    /// </summary>
+    private void ApplyTilt()
+    {
+        Vector3 velocity = GetHorizontalRBVelocity();
+        velocity.y = 0f; //we only want horizontal velocity for tilting
+        Vector3 localVelocity = characterModel.InverseTransformDirection(velocity);
+
+        float pitch = Mathf.Clamp(localVelocity.z * maxPitchAngle, -maxPitchAngle, maxPitchAngle);
+        float roll = Mathf.Clamp(localVelocity.x * maxRollAngle, -maxRollAngle, maxRollAngle);
+
+        float currentYaw = characterMesh.localEulerAngles.y;
+        Quaternion targetTilt = Quaternion.Euler(pitch, currentYaw, roll);
+        characterMesh.localRotation = Quaternion.Slerp(characterMesh.localRotation, targetTilt, responsiveness * Time.fixedDeltaTime);
+    }
+    #endregion
 
     // Limit horizontal and vertical velocity
     private void LimitVelocity()
@@ -307,59 +322,24 @@ public class PlayerMovement : BaseMovement
         
     }
 
-    // Tell the character to start sprinting
-
     #endregion
-
-    //#region Ground Checking
-
-    //// Check if the character is on the ground
-    //private void CheckIsGrounded()
-    //{
-    //    //record the grounded status from previous check
-    //    wasGroundedLastFrame = isGrounded;
-
-    //    //calc the origin of the sphere just below the center of the bottom sphere of the capsule collider
-    //    //we assume the origin is at the bottom center of the capsule
-    //    Vector3 p1 = transform.position + (Vector3.up * (capsuleCollider.radius * 0.9f));
-
-    //    //OverlapSphere returns an array of colliders it hits
-    //    Collider[] groundColliders = Physics.OverlapSphere(p1, capsuleCollider.radius * 0.95f, environmentLayerMask); //center of sphere, radius of sphere, environment LayerMask (hittable layers)
-
-    //    //we're on the ground if there's atleast 1 collider under us
-    //    isGrounded = groundColliders.Length > 0;
-
-    //    //if we became grounded this frame
-    //    if (!wasGroundedLastFrame && isGrounded)
-    //    {
-    //        currentJump = 0;
-
-    //        landSource.Play();
-    //    }
-    //    //we became airborne this frame
-    //    else if (wasGroundedLastFrame && !isGrounded)
-    //    {
-    //        //if we didn't jump since jumping would set it to 1
-    //        if (currentJump == 0)
-    //        {
-    //            currentJump += 1; //expend jump when becoming airborne
-    //        }
-    //    }
-    //}
-
-    //#endregion
 
     #endregion
 
     #region Debug
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = isGrounded ? Color.green : Color.red;
-    //    Vector3 p1 = transform.position + (Vector3.up * (capsuleCollider.radius * 0.9f));
+    private void OnDrawGizmos()
+    {
+        //draw movement direction vector
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + movementDirection * 2);
 
-    //    Gizmos.DrawWireSphere(p1, capsuleCollider.radius * 0.95f);
-    //}
+        //draw velocity vector
+        if (rb != null)
+        {Gizmos.color = new Color(0f, 0.5f, 1f); // bright blue
+            Gizmos.DrawLine(transform.position, transform.position + rb.linearVelocity);
+        }
+    }
 
     #endregion  
 

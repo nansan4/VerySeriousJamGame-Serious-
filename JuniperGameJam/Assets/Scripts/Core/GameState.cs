@@ -1,3 +1,4 @@
+#region Imports
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -5,6 +6,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events; //gives access to UnityEvent type
 using UnityEngine.SceneManagement; //give us access to SceneManager
+#endregion
 
 /// <summary>
 /// The GameState is an overarching manager that handles rules and information about the broader state of the game, 
@@ -13,33 +15,50 @@ using UnityEngine.SceneManagement; //give us access to SceneManager
 /// </summary>
 public class GameState : MonoBehaviour
 {
+    #region Singleton
     //Singleton Pattern
 
     private static GameState _instance = null; //static/global reference to the single instance of the object because singleton pattern
     public static GameState Instance { get { return _instance; } } //safe way for other objects to reference GameManager without changing the ref
+    #endregion
 
+    #region Time Scale
     private float _defaultTimeScale = 1.0f; //default time scale of the game
     public float DefaultTimeScale {  get { return _defaultTimeScale; } }
     public float usedTimeScale = 1.0f; //the time scale that can be edited, used for slow-motion and unpausing
+    #endregion
 
+    #region Pause State
     protected bool isPaused = false;
     public bool IsPaused {  get { return isPaused; } }
+    #endregion
 
+    #region References
 
     [SerializeField] private CinemachineImpulseSource _impulseSource;
+    #endregion
 
+    #region Game Status
     [SerializeField] protected GameStatus currentGameStatus = GameStatus.Initializing; //represents progress status of the game
     public GameStatus CurrentGameStatus { get { return currentGameStatus; } }
+    #endregion
 
     //declare game-specific info HERE(lives, timer, etc.)
     
+    #region Game Values
     //[SerializeField] private AudioSource playerDamageSound;
     [SerializeField] private float timeSpeedUpMultiplier = 1.0f;
+    [Header("Game Stats")]
     [SerializeField] private int maxScoreToWin = 100;
     private int _currentScore = 0;
 
-    public int GameScore { get { return _currentScore; } }
+    [SerializeField] private bool isEndless;
+    [SerializeField] private float gameDuration;
 
+    public int GameScore { get { return _currentScore; } }
+    #endregion
+
+    #region Difficulty Params
     [Header("Difficulty Params")]
     [SerializeField] private float _boxMalfunctionChance_Normal = 0.1f;
     [SerializeField] private float _boxMalfunctionChance_Hard = 0.45f;
@@ -53,6 +72,7 @@ public class GameState : MonoBehaviour
     private float _boxMalfunctionChance;
     private float _boxInvalidityTime;
     [SerializeField] private float _initialSpawnDelayTime;
+    #endregion
 
     #region DifficultyGetters
     public float BoxMalfunctionChance { get { return  _boxMalfunctionChance; } }
@@ -61,6 +81,7 @@ public class GameState : MonoBehaviour
 
     #endregion
 
+    #region Events
     //invoke whenever important info in GameState changes, observers (listeners) can execute code when invoked
     public UnityEvent OnGamePaused;
     public UnityEvent OnGameResumed;
@@ -70,7 +91,9 @@ public class GameState : MonoBehaviour
 
     //bring along GameStatus info with UnityEvent<T>
     public UnityEvent<GameStatus> OnGameStatusChanged;
+    #endregion
 
+    #region Unity Lifecycle
     private void Awake()
     {
         #region Persistent Singleton
@@ -101,8 +124,27 @@ public class GameState : MonoBehaviour
         //{
         //    OnPlayerHealed?.Invoke();
         //}
+        OnGameStatusChanged.AddListener(GameStatusChanged);
     }
 
+    private void GameStatusChanged(GameStatus gameStatus)
+    {
+        if (gameStatus == GameStatus.Initializing)
+        {
+            UI_Manager.instance.SetTotalPackages(maxScoreToWin);
+            if (!isEndless)
+            {
+                UI_Manager.instance.SetTimeRemaining(gameDuration);
+            }
+            else
+            {
+                UI_Manager.instance.SetTimeRemaining(-1f);
+            }
+        }
+    }
+    #endregion
+
+    #region Scene Handling
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == Globals.MAIN_MENU_SCENE_NAME) //if this is the main menu scene, reset GameState
@@ -111,7 +153,9 @@ public class GameState : MonoBehaviour
         }
         Cursor.visible = true;
     }
+    #endregion
 
+    #region State Control
     public void SetGamePaused(bool paused)
     {
         isPaused = paused;
@@ -147,7 +191,9 @@ public class GameState : MonoBehaviour
 
         return true; //succesfully updated game state
     }
+    #endregion
 
+    #region Reset
     public void ResetGameState() //returns all values in GameState to "default"
     {
         Debug.Log("Resetting game state");
@@ -165,12 +211,16 @@ public class GameState : MonoBehaviour
 
         //reset other info here (lives, timer, etc.)
     }
+    #endregion
 
+    #region Camera
     public void ShakeCamera()
     {
         _impulseSource.GenerateImpulse();
     }
+    #endregion
 
+    #region Time Control
     public IEnumerator ChangeGameTimeScaleRoutine(float duration, float newTimeScale, bool fade = false)
     {
         //Debug.Log("started changing time");
@@ -229,7 +279,9 @@ public class GameState : MonoBehaviour
 
         Debug.Log("time has been succesfully changed!");
     }
+    #endregion
 
+    #region Score
     public void IncrementScore()
     {
         _currentScore++;
@@ -246,8 +298,10 @@ public class GameState : MonoBehaviour
     {
         _currentScore--;
     }
+    #endregion
 }
 
+#region Enums
 //track status with enum because names are easier than numbers
 public enum GameStatus
 {
@@ -257,3 +311,4 @@ public enum GameStatus
     PlayerWon,      //game over
     PlayerLost      //game over
 }
+#endregion

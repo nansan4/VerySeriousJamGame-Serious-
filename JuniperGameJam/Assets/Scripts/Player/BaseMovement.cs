@@ -19,6 +19,7 @@ public abstract class BaseMovement : MonoBehaviour
     public new Rigidbody rb; //public so can be read by other scripts (like animation)
     [SerializeField] protected AudioSource audioSource;
     [SerializeField] protected Transform characterModel; //ref to object can contains visuals
+    [SerializeField] protected Transform characterMesh; //ref to object can contains visuals
 
     //lets controller object give us movement instructions
     public virtual void SetMovementInput(Vector2 moveInput) //virtual keyword lets us override this func in a child class, implementation will fall back to that of parent class if not overriden
