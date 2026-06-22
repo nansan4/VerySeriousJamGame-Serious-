@@ -35,8 +35,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameState = GameState.Instance;
-
-        StartCoroutine(InitialSpawnRoutine());
+        if (gameState.CurrentGameStatus == GameStatus.Initializing)
+        {
+            StartCoroutine(InitialSpawnRoutine());
+        }
     }
 
     public void PauseGame()

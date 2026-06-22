@@ -23,7 +23,15 @@ public class PlayerController : MonoBehaviour
     {
         // Set up our player actions in code
         // This class name is based on what you named your .inputactions asset
-        playerInputActions = new InputSystem_Actions();
+        if (InputManager.Instance != null)
+        {
+            playerInputActions = InputManager.Instance.InputActions;
+        }
+        else
+        {
+            playerInputActions = new InputSystem_Actions();
+            Debug.LogError("InputManager does not exist in the scene! Please add an InputManager object to the scene.");
+        }
     }
 
     private void Start()

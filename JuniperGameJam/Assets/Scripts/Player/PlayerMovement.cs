@@ -38,6 +38,8 @@ public class PlayerMovement : BaseMovement
     [Header("Character - Rotation")]
     [SerializeField] private float groundRotationRate = 10f;    // The rate at which the player rotates (when grounded)
     [SerializeField] private float responsiveness = 5f;
+    [SerializeField] private float maxPitchAngle = 45f;          // The maximum angle the character can pitch up or down when moving
+    [SerializeField] private float maxRollAngle = 45f;           // The maximum angle the character can roll left or right when moving
 
     [Header("Character - Camera")]
     [SerializeField] private Transform cameraTransform;         // The transform component of our Character's Camera
@@ -79,6 +81,7 @@ public class PlayerMovement : BaseMovement
 
         //apply any character movement
         Move();
+        ApplyTilt();
 
         GainHeight();
         ReduceHeight();
@@ -150,10 +153,6 @@ public class PlayerMovement : BaseMovement
         {
             //apply force as acceleration, constant regardless of mass
             rb.AddForce(movementDirection * accelerationRate, ForceMode.Acceleration);
-
-            rb.AddTorque(transform.right * movementDirection.normalized.z * responsiveness); //pitch
-            rb.AddTorque(transform.forward * movementDirection.normalized.x * responsiveness); //roll
-            rb.AddTorque(transform.up * movementDirection.normalized.y * responsiveness); //yaw
         }
         else if (movementDirection == Vector3.zero) //if we aren't trying to move
         {
@@ -185,6 +184,7 @@ public class PlayerMovement : BaseMovement
         }
     }
 
+    #region Rotation
     // Rotate the character model to face direction of movement
     protected override void Rotate()
     {
@@ -194,6 +194,24 @@ public class PlayerMovement : BaseMovement
             characterModel.forward = Vector3.Slerp(characterModel.forward, movementDirection.normalized, groundRotationRate * Time.deltaTime);
         }
     }
+
+    /// <summary>
+    /// Tilts the character model based on horizontal velocity to give a sense of momentum and weight. The tilt is applied by calculating the desired pitch and roll angles based on the character's local velocity and then smoothly interpolating the character model's rotation towards these target angles using Slerp for smooth transitions. The responsiveness variable controls how quickly the character tilts in response to changes in velocity, while maxPitchAngle and maxRollAngle limit the maximum tilt angles to prevent excessive tilting. This function is called in FixedUpdate to ensure that the tilt is updated consistently with the physics simulation.
+    /// </summary>
+    private void ApplyTilt()
+    {
+        Vector3 velocity = GetHorizontalRBVelocity();
+        velocity.y = 0f; //we only want horizontal velocity for tilting
+        Vector3 localVelocity = characterModel.InverseTransformDirection(velocity);
+
+        float pitch = Mathf.Clamp(localVelocity.z * maxPitchAngle, -maxPitchAngle, maxPitchAngle);
+        float roll = Mathf.Clamp(localVelocity.x * maxRollAngle, -maxRollAngle, maxRollAngle);
+
+        float currentYaw = characterMesh.localEulerAngles.y;
+        Quaternion targetTilt = Quaternion.Euler(pitch, currentYaw, roll);
+        characterMesh.localRotation = Quaternion.Slerp(characterMesh.localRotation, targetTilt, responsiveness * Time.fixedDeltaTime);
+    }
+    #endregion
 
     // Limit horizontal and vertical velocity
     private void LimitVelocity()
