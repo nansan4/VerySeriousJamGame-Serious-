@@ -34,6 +34,12 @@ public class UI_Manager : MonoBehaviour
     #endregion
 
     #region Unity Lifecycle
+    void Start()
+    {
+        GameState.Instance.OnGamePaused.AddListener(Hide);
+        GameState.Instance.OnGameResumed.AddListener(Show);
+    }
+
     void FixedUpdate()
     {
         if (!isEndless) 
@@ -94,6 +100,18 @@ public class UI_Manager : MonoBehaviour
         {
             timerText.text = "∞";
         }
+    }
+    #endregion
+
+    #region Hide/Show
+    public void Show()
+    {
+        uiCanvas.enabled = true;
+    }
+
+    public void Hide()
+    {
+        uiCanvas.enabled = false;
     }
     #endregion
 }
