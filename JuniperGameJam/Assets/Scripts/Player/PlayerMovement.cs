@@ -18,9 +18,9 @@ public class PlayerMovement : BaseMovement
 
     [Header("Character - Air Movement")]
     [SerializeField] protected float jumpForce = 6f;            // The amount of power used by this character to jump.
-    [SerializeField] [UnityEngine.Range(0f,1f)] protected float jumpForceAcceleration = 0.015f;
+    [SerializeField] [Range(0f,1f)] protected float jumpForceAcceleration = 0.015f;
     private float currentJFA = 0f;
-    [SerializeField] [UnityEngine.Range(0f,1f)] protected float jumpForceDeceleration = 0.015f;
+    [SerializeField] [Range(0f,1f)] protected float jumpForceDeceleration = 0.015f;
     private float currentJFD = 0f;
     public UnityEvent OnCharacterJump;                          // Event that fires when the character jumps
     private bool isGainingHeight = false;
@@ -28,13 +28,13 @@ public class PlayerMovement : BaseMovement
     private bool isReducingVerticalSpeed = false;
     private bool isGainingVerticalSpeed = false;
     [SerializeField] private float idleBobAmount = 0.2f;
-    [SerializeField] [UnityEngine.Range(0,2)] private float idleBobSpeed = 1.2f;
+    [SerializeField] [Range(0,2)] private float idleBobSpeed = 1.2f;
     private float currentBobOffset = 0f;
-[SerializeField] private float bobBlendSpeed = 5f;
+    [SerializeField] private float bobBlendSpeed = 5f;
 
     [Header("Character - Rotation")]
     [SerializeField] private float groundRotationRate = 10f;    // The rate at which the player rotates (when grounded)
-    [SerializeField] private float responsiveness = 100f;
+    [SerializeField] private float responsiveness = 0.75f;
     [SerializeField] private float maxPitchAngle = 45f;          // The maximum angle the character can pitch up or down when moving
     [SerializeField] private float maxRollAngle = 45f;           // The maximum angle the character can roll left or right when moving
 

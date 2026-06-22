@@ -941,7 +941,7 @@ MonoBehaviour:
   idleBobSpeed: 1.6
   bobBlendSpeed: 5
   groundRotationRate: 5
-  responsiveness: 0.5
+  responsiveness: 0.75
   maxPitchAngle: 15
   maxRollAngle: 15
   cameraTransform: {fileID: 1472704077}
