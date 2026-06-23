@@ -7,6 +7,6 @@ public class PropellerSpinScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PropellerBone.transform.Rotate(0, 0, RotateSpeed);
+        PropellerBone.transform.Rotate(0, 0, RotateSpeed * Time.deltaTime);
     }
 }

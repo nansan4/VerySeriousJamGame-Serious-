@@ -59,7 +59,7 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 0.7754717, g: 0.9384252, b: 1, a: 1}
-    - _DitherColor: {r: 0.654902, g: 0.7294118, b: 0.70190346, a: 1}
+    - _DitherColor: {r: 0.2679245, g: 0.2679245, b: 0.2679245, a: 1}
     - _DitherColor_1: {r: 0.42920747, g: 0.44916618, b: 0.4566037, a: 1}
     - _DitherColor_2: {r: 0.25964773, g: 0.27743182, b: 0.313, a: 1}
     - _RimColor: {r: 0.16611607, g: 0.21712017, b: 0.2905661, a: 1}

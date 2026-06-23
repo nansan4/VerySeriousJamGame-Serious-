@@ -43,7 +43,7 @@ public class MovingBuilding : MonoBehaviour
         
 
             // Get a position between your point and the next then move between them
-            Vector3 CurrentPosition = Vector3.Lerp(transform.position, nextWaypoint.position, CycleSpeed/64);
+            Vector3 CurrentPosition = Vector3.Lerp(transform.position, nextWaypoint.position, CycleSpeed * Time.deltaTime);
             transform.position = CurrentPosition;
 
             // Check the distance between my waypoint and the next
