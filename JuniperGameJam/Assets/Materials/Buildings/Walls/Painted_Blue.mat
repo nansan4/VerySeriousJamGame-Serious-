@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Painted_Yellow
+  m_Name: Painted_Blue
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 2100000, guid: c9037b035e9f4454c85037a077a758bb, type: 2}
   m_ModifiedSerializedProperties: 0
@@ -44,7 +44,7 @@ Material:
     - _Smoothness: 0.393
     - _WorkflowMode: 0
     m_Colors:
-    - _BaseColor: {r: 0.92941177, g: 0.8392157, b: 0.5529412, a: 1}
-    - _Color: {r: 0.92941177, g: 0.8392157, b: 0.55294114, a: 1}
+    - _BaseColor: {r: 0.5485424, g: 0.6147458, b: 0.744, a: 1}
+    - _Color: {r: 0.5485423, g: 0.6147458, b: 0.744, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
