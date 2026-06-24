@@ -6752,7 +6752,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863944526}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 324c2ab04a7f7c74091af2be70550762, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9142,58 +9142,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 819447207340543354, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 8596dadb396a3084797e4f7fc42f2c0b, type: 2}
     - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
       propertyPath: m_ConnectedBody
       value: 
       objectReference: {fileID: 5817345356864675281}
-    - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_AngularYLimit.limit
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_LowAngularXLimit.limit
-      value: -35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_HighAngularXLimit.limit
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_AngularYLimit.bounciness
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_AngularXLimitSpring.damper
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_AngularXLimitSpring.spring
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_AngularYZLimitSpring.damper
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_AngularYZLimitSpring.spring
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_LowAngularXLimit.bounciness
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409353291771738673, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_HighAngularXLimit.bounciness
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4743139774865598499, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_LinearDamping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4743139774865598499, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
-      propertyPath: m_AngularDamping
-      value: 2
-      objectReference: {fileID: 0}
+    - target: {fileID: 3172717548302655856, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 8596dadb396a3084797e4f7fc42f2c0b, type: 2}
     - target: {fileID: 4814128331085247554, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 173.216
@@ -9234,6 +9194,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4948274285374602124, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 8596dadb396a3084797e4f7fc42f2c0b, type: 2}
+    - target: {fileID: 6623637330066005736, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 8596dadb396a3084797e4f7fc42f2c0b, type: 2}
+    - target: {fileID: 7619647800024306685, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 8596dadb396a3084797e4f7fc42f2c0b, type: 2}
+    - target: {fileID: 8201436213646747757, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 8596dadb396a3084797e4f7fc42f2c0b, type: 2}
+    - target: {fileID: 8586328377456349258, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 8596dadb396a3084797e4f7fc42f2c0b, type: 2}
     - target: {fileID: 8945771004463078136, guid: 0cd68eab20cd2bd4a9a3211f03691fe5, type: 3}
       propertyPath: m_Name
       value: TriHook
