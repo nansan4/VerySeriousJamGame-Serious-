@@ -10928,7 +10928,7 @@ MonoBehaviour:
   responsiveness: 0.75
   maxPitchAngle: 15
   maxRollAngle: 15
-  fanForce: 100
+  fanForce: 65
   cameraTransform: {fileID: 1472704077}
   mainCamera: {fileID: 0}
 --- !u!114 &8026653331726727694
