@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Globals is a raw c# class that is used to hold static, never changing variables that may need to be acessed from anywhere

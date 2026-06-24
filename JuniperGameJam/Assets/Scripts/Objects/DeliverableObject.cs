@@ -6,6 +6,7 @@ using System.Collections;
 /// </summary>
 public class DeliverableObject : MonoBehaviour
 {
+    #region Serialized Fields
     [Header("Component Refs")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Collider col;
@@ -14,7 +15,8 @@ public class DeliverableObject : MonoBehaviour
     [SerializeField] private Material mat;
 
     [Header("Instance Vars")]
-    [SerializeField] private bool isFragile = false;
+    // [SerializeField] private bool isFragile = false;
+    [SerializeField] private DeliverableObjectType objectType;
     [SerializeField] private bool deliverAnywhere = false;
     [SerializeField] private float breakForceThreshold = 1f;
     [Tooltip("percent change to add to the malfunction chance, 1 is effectivley guaranteed (0 base + 1 = 1) and -1 means it will never happen (1 base - 1 = 0)")]
@@ -23,14 +25,18 @@ public class DeliverableObject : MonoBehaviour
 
     [Header("DEBUG")]
     [SerializeField] private bool enableDebug = false;
+    #endregion
 
+    #region Private Fields
     private MeshRenderer _meshRenderer;
     private bool _isOnSurface = false;
     private bool _isOffHook = false;
     private float _currentMalfunctionChance;
     private GameObject _destination;
     private float _invalidityTime;
+    #endregion
 
+    #region Unity Lifecycle
     private void Start()
     {
         _currentMalfunctionChance = GameState.Instance.BoxMalfunctionChance + malfunctionAdditive;
@@ -43,13 +49,15 @@ public class DeliverableObject : MonoBehaviour
 
         StartCoroutine(InvalidityRoutine());
     }
+    #endregion
 
+    #region Collision / Trigger Handlers
     //is delivered? : 
     //on coll enter with the deliver surface && trigger not overlap with object on hook layer
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.impulse.magnitude > breakForceThreshold && isFragile)
+        if(collision.impulse.magnitude > breakForceThreshold && objectType == DeliverableObjectType.Fragile)
         {
             //Debug.Log("impulse: " + collision.impulse.magnitude);
             BreakDeliverable();
@@ -94,7 +102,9 @@ public class DeliverableObject : MonoBehaviour
             _isOffHook = false;
         }
     }
+    #endregion
 
+    #region Delivery / State Logic
     private IEnumerator InvalidityRoutine()
     {
         Debug.Log("starting invalidity routine");
@@ -175,10 +185,23 @@ public class DeliverableObject : MonoBehaviour
         BoxCleanupManager.Instance.AddObjectToDestroy(gameObject);
 
     }
+    #endregion
 
+    #region Public API
     public void SetDestination(GameObject destination)
     {
         //set game object in order to compare object using collision detection
         _destination = destination;
     }
+    #endregion
 }
+
+#region Enums
+
+public enum DeliverableObjectType
+{
+    Fragile,
+    NonFragile
+}
+
+#endregion

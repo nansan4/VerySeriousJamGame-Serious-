@@ -37,6 +37,11 @@ public class PlayerMovement : BaseMovement
     [SerializeField] private float responsiveness = 0.75f;
     [SerializeField] private float maxPitchAngle = 45f;          // The maximum angle the character can pitch up or down when moving
     [SerializeField] private float maxRollAngle = 45f;           // The maximum angle the character can roll left or right when moving
+    private bool isBeingSpun = false;
+    private float currentSpinVelocity;
+
+    [Header("Fans")]
+    [SerializeField] private float fanForce = 10f;
 
     [Header("Character - Camera")]
     [SerializeField] private Transform cameraTransform;         // The transform component of our Character's Camera
@@ -186,7 +191,7 @@ public class PlayerMovement : BaseMovement
     // Rotate the character model to face direction of movement
     protected override void Rotate()
     {
-        if (movementDirection != Vector3.zero) //if we're trying to move
+        if (movementDirection != Vector3.zero && !isBeingSpun) //if we're trying to move and are not caught in a fan
         {
             //rotate mesh by aligning their forward vector with movement direction, Slerp is spherical interpolation
             characterModel.forward = Vector3.Slerp(characterModel.forward, movementDirection.normalized, groundRotationRate * Time.deltaTime);
@@ -321,6 +326,45 @@ public class PlayerMovement : BaseMovement
         rb.AddForce(verticalDirection * adjustedJumpForce, ForceMode.Acceleration);
 
         
+    }
+
+    #endregion
+
+    #region Collision/Triggers
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Fan"))
+        {
+            isBeingSpun = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.CompareTag("Fan"))
+        return;
+
+        Debug.Log("Being pushed by fan!");
+
+        rb.AddForce(other.transform.up * fanForce, ForceMode.Acceleration);
+
+        float velocity = GetHorizontalRBVelocity().magnitude;
+        float maxSpinSpeed = (fanForce + velocity) * 120f;
+
+        // Randomly change spin direction and magnitude
+        currentSpinVelocity += Random.Range(-maxSpinSpeed, maxSpinSpeed) * Time.fixedDeltaTime;
+        currentSpinVelocity = Mathf.Clamp(currentSpinVelocity, -maxSpinSpeed, maxSpinSpeed);
+
+        characterModel.Rotate(0f, currentSpinVelocity * Time.fixedDeltaTime, 0f, Space.Self);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Fan"))
+        {
+            isBeingSpun = false;
+        }
     }
 
     #endregion
