@@ -78,7 +78,8 @@ public class PlayerMovement : BaseMovement
 
         //apply any character movement
         Move();
-        ApplyTilt();
+        //ApplyTilt();
+        Rotate();
 
         GainHeight();
         ReduceHeight();
@@ -163,11 +164,11 @@ public class PlayerMovement : BaseMovement
 
             Vector3 modelEuler = characterModel.transform.rotation.eulerAngles;
             Quaternion modelTargetRotation = Quaternion.Euler(0f, modelEuler.y, 0f);
-            characterModel.transform.rotation = Quaternion.Slerp(characterModel.transform.rotation, modelTargetRotation, groundRotationRate * Time.fixedDeltaTime);
+            //characterModel.transform.rotation = Quaternion.Slerp(characterModel.transform.rotation, modelTargetRotation, groundRotationRate * Time.fixedDeltaTime);
 
             Vector3 bodyEuler = transform.rotation.eulerAngles;
             Quaternion bodyTargetRotation = Quaternion.Euler(0f, bodyEuler.y, 0f);
-            transform.rotation = Quaternion.Slerp(transform.rotation, bodyTargetRotation, groundRotationRate * Time.fixedDeltaTime);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, bodyTargetRotation, groundRotationRate * Time.fixedDeltaTime);
         }
 
         //set player position to minimum world height

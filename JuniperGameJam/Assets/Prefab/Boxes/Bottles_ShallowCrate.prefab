@@ -1504,6 +1504,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3114232044067607637}
+  - component: {fileID: 4070558759106770765}
+  - component: {fileID: 5054274390317299237}
   m_Layer: 7
   m_Name: Bottles_ShallowCrate
   m_TagString: Untagged
@@ -1527,3 +1529,53 @@ Transform:
   - {fileID: 595534584712921260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &4070558759106770765
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9213475636979692981}
+  serializedVersion: 5
+  m_Mass: 4
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!114 &5054274390317299237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9213475636979692981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d442c318312a60043b691673b0e91b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliverableObject
+  rb: {fileID: 4070558759106770765}
+  col: {fileID: 5986993307328499404}
+  hookDetectionTrigger: {fileID: 0}
+  hookLoop: {fileID: 0}
+  mat: {fileID: 0}
+  isFragile: 1
+  deliverAnywhere: 0
+  breakForceThreshold: 5
+  malfunctionAdditive: 0
+  despawnWaitTime: 15
+  enableDebug: 0
