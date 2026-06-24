@@ -367,6 +367,11 @@ public class PlayerMovement : BaseMovement
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        PlayerAudioManager.Instance.PlayRandomCollisionSFX();
+    }
+
     #endregion
 
     #endregion
