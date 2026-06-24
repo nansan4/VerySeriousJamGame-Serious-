@@ -10777,12 +10777,12 @@ MonoBehaviour:
   movementDirection: {x: 0, y: 0, z: 0}
   accelerationRate: 6
   decelerationRate: 5
-  maxWalkSpeed: 5.5
-  maxVerticalSpeed: 3.5
+  maxWalkSpeed: 8
+  maxVerticalSpeed: 5.5
   minimumWorldHeight: 0.5
-  jumpForce: 10
-  jumpForceAcceleration: 0.045
-  jumpForceDeceleration: 0.0075
+  jumpForce: 15
+  jumpForceAcceleration: 0.09
+  jumpForceDeceleration: 0.015
   OnCharacterJump:
     m_PersistentCalls:
       m_Calls: []
