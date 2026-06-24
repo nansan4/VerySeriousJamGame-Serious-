@@ -11,4 +11,13 @@ public static class Globals //raw C# class
     public static string MAIN_MENU_SCENE_NAME = "MainMenuScene";
     public static string GAMEPLAY_SCENE_NAME = "GameplayScene";
 
+
+    public static float BOX_MALFUNCTION_CHANCE_MULT_NORMAL = 0.1f;
+    public static float BOX_MALFUNCTION_CHANCE_MULT_HARD = 0.45f;
+
+    public static float BOX_INVALIDITY_TIME_MULT_NORMAL = 1f;
+    public static float BOX_INVALIDITY_TIME_MULT_HARD = 0.45f;
+
+    public static float INITIAL_SPAWN_DELAY_MULT_NORMAL = 2f;
+    public static float INITIAL_SPAWN_DELAY_MULT_HARD = 1f;
 }

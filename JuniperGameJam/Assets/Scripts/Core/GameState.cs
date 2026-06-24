@@ -60,18 +60,19 @@ public class GameState : MonoBehaviour
 
     #region Difficulty Params
     [Header("Difficulty Params")]
-    [SerializeField] private float _boxMalfunctionChance_Normal = 0.1f;
-    [SerializeField] private float _boxMalfunctionChance_Hard = 0.45f;
+    [SerializeField] private float _boxMalfunctionBaseChance_Normal = 1f;
+    [SerializeField] private float _boxMalfunctionBaseChance_Hard = 1f;
 
-    [SerializeField] private float _boxInvalidityTime_Normal = 60f;
-    [SerializeField] private float _boxInvalidityTime_Hard = 30f;
+    [SerializeField] private float _boxInvalidityBaseTime_Normal = 60f;
+    [SerializeField] private float _boxInvalidityBaseTime_Hard = 30f;
 
-    [SerializeField] private float _initialSpawnDelayTime_Normal = 5f;
-    [SerializeField] private float _initialSpawnDelayTime_Hard = 5f;
+    [SerializeField] private float _initialSpawnDelayBaseTime_Normal = 5f;
+    [SerializeField] private float _initialSpawnDelayBaseTime_Hard = 5f;
 
+    //this is what the game uses, set based on difficulty
     private float _boxMalfunctionChance;
     private float _boxInvalidityTime;
-    [SerializeField] private float _initialSpawnDelayTime;
+    [SerializeField] private float _initialSpawnDelayTime; //serializefield for debugging purposes, but should be set based on difficulty
     #endregion
 
     #region DifficultyGetters
