@@ -4427,6 +4427,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07649b38ebf0c2542b02da2e4a57ed28, type: 3}
+--- !u!1001 &989474764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3114232044067607637, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 180.1142
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114232044067607637, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.8781865
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114232044067607637, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 32.037975
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114232044067607637, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9837463
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114232044067607637, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114232044067607637, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.17956424
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114232044067607637, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114232044067607637, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114232044067607637, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -20.689
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114232044067607637, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213475636979692981, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+      propertyPath: m_Name
+      value: Newspapers_DeepCrate
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
 --- !u!1001 &1007620901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12311,3 +12368,4 @@ SceneRoots:
   - {fileID: 2140071163}
   - {fileID: 971079397}
   - {fileID: 8557541853338763449}
+  - {fileID: 989474764}

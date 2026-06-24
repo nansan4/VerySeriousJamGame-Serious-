@@ -1510,7 +1510,7 @@ GameObject:
   - component: {fileID: 2504823563660786396}
   - component: {fileID: 4028063197967311101}
   m_Layer: 7
-  m_Name: ClothV2_ShallowCrate 1
+  m_Name: ClothV2_ShallowCrate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1540,7 +1540,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9213475636979692981}
   serializedVersion: 5
-  m_Mass: 4
+  m_Mass: 3
   m_LinearDamping: 0.1
   m_AngularDamping: 0.1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   hookDetectionTrigger: {fileID: 0}
   hookLoop: {fileID: 0}
   mat: {fileID: 0}
-  isFragile: 0
+  objectType: 0
   deliverAnywhere: 0
   breakForceThreshold: 1
   malfunctionAdditive: 0
