@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 /// <summary>
 /// A pointer that appears near the DeliverableObject to show the player where to deliver it
@@ -18,11 +19,17 @@ public class DeliverablePointer : MonoBehaviour
 
     private void Start()
     {
-        
-        // get the delivery location of the deliverableobject and then use that transform
+
         gameObject.SetActive(false);
     }
 
+
+    private IEnumerator DelaySetTransform()
+    {
+        yield return new WaitForSeconds(2f);
+
+        OnGetLocation(DeliverableObject.BoxDeliveryDestination);
+    }
     private void Update()
     {
 

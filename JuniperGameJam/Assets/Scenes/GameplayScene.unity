@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &44465163 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1106769174626358209, guid: ec35ef78de07f474584996a3fd78bf5e, type: 3}
+  m_PrefabInstance: {fileID: 1451437356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb511610b5a47f49b62551ef884c10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectSpawner
 --- !u!1 &67612518
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,6 +909,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312303830}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &388305553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5539356781192581358, guid: ec35ef78de07f474584996a3fd78bf5e, type: 3}
+  m_PrefabInstance: {fileID: 1451437356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb511610b5a47f49b62551ef884c10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectSpawner
 --- !u!1001 &428682986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -955,6 +977,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7631d6537b59b8a43868c00e1a012be6, type: 3}
+--- !u!114 &428682987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 218838524435605720, guid: 7631d6537b59b8a43868c00e1a012be6, type: 3}
+  m_PrefabInstance: {fileID: 428682986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ddcd7711f4348bc44048587b1afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliverySurface
+--- !u!114 &428682988 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2731195303875739820, guid: 7631d6537b59b8a43868c00e1a012be6, type: 3}
+  m_PrefabInstance: {fileID: 428682986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ddcd7711f4348bc44048587b1afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliverySurface
 --- !u!1001 &520776251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1665,6 +1709,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6abfed73379e630439710b8788c58a9e, type: 3}
+--- !u!114 &864390356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4870797494441058624, guid: 6abfed73379e630439710b8788c58a9e, type: 3}
+  m_PrefabInstance: {fileID: 864390355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ddcd7711f4348bc44048587b1afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliverySurface
+--- !u!114 &864390357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1319255420659894694, guid: 6abfed73379e630439710b8788c58a9e, type: 3}
+  m_PrefabInstance: {fileID: 864390355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ddcd7711f4348bc44048587b1afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliverySurface
 --- !u!1 &880620139
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,6 +2581,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d1c49cd4889f2347a87ab27a1b6225f, type: 3}
+--- !u!114 &1037426190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9015507871444353129, guid: 1d1c49cd4889f2347a87ab27a1b6225f, type: 3}
+  m_PrefabInstance: {fileID: 1037426189}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ddcd7711f4348bc44048587b1afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliverySurface
+--- !u!114 &1037426191 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3552804019942593493, guid: 1d1c49cd4889f2347a87ab27a1b6225f, type: 3}
+  m_PrefabInstance: {fileID: 1037426189}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ddcd7711f4348bc44048587b1afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliverySurface
 --- !u!1001 &1161643577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2965,17 +3053,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32bd9dc90127ea04387c96ef897cf8e7, type: 3}
---- !u!114 &1334089666 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5666515189609681703, guid: cb3fff621c50be64ebd6e018cdf1633e, type: 3}
-  m_PrefabInstance: {fileID: 6322468384396712607}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb511610b5a47f49b62551ef884c10d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObjectSpawner
 --- !u!1 &1415224087 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7082903112057777172, guid: efa13e0fe5df64bca8568577e9b67551, type: 3}
@@ -3038,6 +3115,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3695077938ae78f4582229dc3d160b1c, type: 3}
+--- !u!114 &1445499727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3993583182054324237, guid: 3695077938ae78f4582229dc3d160b1c, type: 3}
+  m_PrefabInstance: {fileID: 1445499726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ddcd7711f4348bc44048587b1afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliverySurface
+--- !u!114 &1445499728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6379470711448335819, guid: 3695077938ae78f4582229dc3d160b1c, type: 3}
+  m_PrefabInstance: {fileID: 1445499726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ddcd7711f4348bc44048587b1afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliverySurface
 --- !u!1001 &1451437356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4907,24 +5006,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
       propertyPath: deliverySurfaces.Array.size
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
       propertyPath: 'objectSpawners.Array.data[0]'
       value: 
-      objectReference: {fileID: 1334089666}
+      objectReference: {fileID: 44465163}
     - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
       propertyPath: 'objectSpawners.Array.data[1]'
       value: 
-      objectReference: {fileID: 987341322}
+      objectReference: {fileID: 388305553}
     - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
       propertyPath: 'deliverySurfaces.Array.data[0]'
       value: 
-      objectReference: {fileID: 1305600756}
+      objectReference: {fileID: 1445499728}
     - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
       propertyPath: 'deliverySurfaces.Array.data[1]'
       value: 
-      objectReference: {fileID: 2106384515}
+      objectReference: {fileID: 864390357}
+    - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
+      propertyPath: 'deliverySurfaces.Array.data[2]'
+      value: 
+      objectReference: {fileID: 428682987}
+    - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
+      propertyPath: 'deliverySurfaces.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1037426191}
+    - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
+      propertyPath: 'deliverySurfaces.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1037426190}
+    - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
+      propertyPath: 'deliverySurfaces.Array.data[5]'
+      value: 
+      objectReference: {fileID: 428682988}
+    - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
+      propertyPath: 'deliverySurfaces.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1445499727}
+    - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
+      propertyPath: 'deliverySurfaces.Array.data[7]'
+      value: 
+      objectReference: {fileID: 864390356}
     - target: {fileID: 3770468285488550473, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
       propertyPath: m_Name
       value: Delivery Manager
