@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeybindsUI : MonoBehaviour
 {
@@ -7,10 +8,12 @@ public class KeybindsUI : MonoBehaviour
     public void Show()
     {
         GetComponent<Canvas>().enabled = true;
+        GetComponent<GraphicRaycaster>().enabled = true;
     }
     public void Hide()
     {
         GetComponent<Canvas>().enabled = false;
+        GetComponent<GraphicRaycaster>().enabled = false;
         OptionsCanvas.Show();
     }
 }

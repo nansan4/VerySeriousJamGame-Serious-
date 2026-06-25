@@ -14,6 +14,39 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-3425788889715533394
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: f0d41ffa866584e4eba4aa07b9fc2ccd
+  m_EffectName: Attenuation
+  m_MixLevel: ca7416c43e4dc4e64b5f7a1eee235942
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &-1851769001354815556
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GameSFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 7607da5acedbc4f8b95dc1f668203ce9
+  m_Children: []
+  m_Volume: d89e5b4e9adfc4e039042640241c4b18
+  m_Pitch: 9c9af375f9d10432f874c019b6187fa2
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -3425788889715533394}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &-1790541301584659013
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -49,12 +82,19 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 0cead24f2b2d84b03b17ee7235bd5a69
+    name: CollisionSFXVolume
+  - guid: d89e5b4e9adfc4e039042640241c4b18
+    name: GameSFXVolume
+  - guid: 8a97a490ffc2c438a97f6f079cf3d02f
+    name: PlayerSFXVolume
   m_AudioMixerGroupViews:
   - guids:
     - e4706eef0727046f7babb372dc5f8684
     - c2cc21d2081b14c72b0de6f299a140a2
     - 54ff87731bd584587abbd65ba8a4e17b
+    - 7607da5acedbc4f8b95dc1f668203ce9
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -70,6 +110,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -1790541301584659013}
   - {fileID: 5457413857908850029}
+  - {fileID: -1851769001354815556}
   m_Volume: e4a4912e589cb4dfab15274a2fecaf2e
   m_Pitch: a7d963851b12e45ba95b85e86b0ebffd
   m_Send: 00000000000000000000000000000000
