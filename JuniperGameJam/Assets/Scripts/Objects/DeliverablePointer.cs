@@ -19,7 +19,7 @@ public class DeliverablePointer : MonoBehaviour
     private void Start()
     {
         
-        //DeliverableObject.
+        // get the delivery location of the deliverableobject and then use that transform
         gameObject.SetActive(false);
     }
 
