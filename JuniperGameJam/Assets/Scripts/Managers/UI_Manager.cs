@@ -48,18 +48,6 @@ public class UI_Manager : MonoBehaviour
             timeRemaining -= Time.fixedDeltaTime;
             SetTimerText();
         }
-        if (timeRemaining <= 10f && !isEndless)
-        {
-            if (!timerWarningPlayed)
-            {
-                PlayerAudioManager.Instance.PlayTimerWarningSFX();
-                timerWarningPlayed = true;
-            }
-        }
-        if (timeRemaining <= 0 && !isEndless) //TODO: End the Game
-        {
-            // GameState.Instance.SetGameStatus(GameStatus.Lost);
-        }
     }
     #endregion
 
