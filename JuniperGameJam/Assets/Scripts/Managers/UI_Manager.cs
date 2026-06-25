@@ -16,6 +16,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private int totalPackages;
     [SerializeField] private float timeRemaining;
     [SerializeField] private bool isEndless;
+    private bool timerWarningPlayed = false;
 
     #region Singleton
     public static UI_Manager instance;
@@ -47,7 +48,15 @@ public class UI_Manager : MonoBehaviour
             timeRemaining -= Time.fixedDeltaTime;
             SetTimerText();
         }
-        if (timeRemaining <= 0 && !isEndless)
+        if (timeRemaining <= 10f && !isEndless)
+        {
+            if (!timerWarningPlayed)
+            {
+                PlayerAudioManager.Instance.PlayTimerWarningSFX();
+                timerWarningPlayed = true;
+            }
+        }
+        if (timeRemaining <= 0 && !isEndless) //TODO: End the Game
         {
             // GameState.Instance.SetGameStatus(GameStatus.Lost);
         }
@@ -59,12 +68,16 @@ public class UI_Manager : MonoBehaviour
     {
         deliveredPackages += num;
         deliveredText.text = deliveredPackages.ToString();
+        PlayerAudioManager.Instance.PlayDeliveredSFX();
+        UpdateTotalText();
     }
 
     public void IncrementMissed(int num)
     {
         missedPackages += num;
         missedText.text = missedPackages.ToString();
+        PlayerAudioManager.Instance.PlayFailedSFX();
+        UpdateTotalText();
     }
 
     public void SetTotalPackages(int num)
