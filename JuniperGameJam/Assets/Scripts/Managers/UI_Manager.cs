@@ -70,12 +70,17 @@ public class UI_Manager : MonoBehaviour
     public void SetTotalPackages(int num)
     {
         totalPackages = num;
-        totalText.text = $"{deliveredPackages + missedPackages}/{totalPackages}";
+        UpdateTotalText();
     }
 
     public void IncrementTotal(int num)
     {
         totalPackages += num;
+        UpdateTotalText();
+    }
+
+    private void UpdateTotalText()
+    {
         totalText.text = $"{deliveredPackages + missedPackages}/{totalPackages}";
     }
     #endregion
