@@ -276,7 +276,12 @@ MonoBehaviour:
   cooldownTime: 10
   spawnAfterCooldown: 0
   prefabDeliverables:
-  - {fileID: 3401788387505056803, guid: a8906836b5b1d1d47b7ade43b8b99e6c, type: 3}
+  - {fileID: 3361256088134049935, guid: 997032fd830ef474db5ab78badc37845, type: 3}
+  - {fileID: 5054274390317299237, guid: 8d27924e447f8344a9bd836cdf215d44, type: 3}
+  - {fileID: 7120457519740182930, guid: 8e898db055f2426478148869a951a6da, type: 3}
+  - {fileID: 4028063197967311101, guid: d91bee33d3a1144438aa16c4f42657b4, type: 3}
+  - {fileID: 5361644596766839293, guid: 2e3b0581dbcb1c844921910917ba3782, type: 3}
+  - {fileID: 5361644596766839293, guid: 3622bf3879d391a47845302aa2a67aa5, type: 3}
 --- !u!65 &3881993147650231992
 BoxCollider:
   m_ObjectHideFlags: 0
