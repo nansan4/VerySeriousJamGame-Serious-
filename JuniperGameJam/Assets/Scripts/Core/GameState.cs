@@ -53,7 +53,7 @@ public class GameState : MonoBehaviour
     private int _currentScore = 0;
 
     [SerializeField] private bool isEndless;
-    [SerializeField] private float gameDuration;
+    [SerializeField] private float gameDuration = 120f;
 
     public int GameScore { get { return _currentScore; } }
     #endregion
@@ -126,6 +126,9 @@ public class GameState : MonoBehaviour
         //    OnPlayerHealed?.Invoke();
         //}
         OnGameStatusChanged.AddListener(GameStatusChanged);
+
+        UI_Manager.instance.SetTotalPackages(maxScoreToWin);
+        UI_Manager.instance.SetTimeRemaining(gameDuration);
     }
 
     private void GameStatusChanged(GameStatus gameStatus)

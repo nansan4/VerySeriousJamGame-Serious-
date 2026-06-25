@@ -22,7 +22,7 @@ public class DeliveryManager : MonoBehaviour
     [SerializeField] private int maxBoxesToSpawn = 3;
     [SerializeField] private int maxBoxesAllowed = 1;
 
-    private int _boxCount = 0;
+    private int _boxCount = 0; 
     private Transform _destination;
     private Transform _marker;
 
@@ -69,11 +69,13 @@ public class DeliveryManager : MonoBehaviour
     public void IncrementScore()
     {
         GameManager.Instance.IncrementScore();
+        UI_Manager.instance.IncrementDelivered(1);
     }
 
     public void DecrementScore()
     {
         GameManager.Instance.DecrementScore();
+        UI_Manager.instance.IncrementMissed(1);
     }
 
     public void IncrementBoxCount()

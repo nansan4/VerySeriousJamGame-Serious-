@@ -47,6 +47,10 @@ public class UI_Manager : MonoBehaviour
             timeRemaining -= Time.fixedDeltaTime;
             SetTimerText();
         }
+        if (timeRemaining <= 0 && !isEndless)
+        {
+            // GameState.Instance.SetGameStatus(GameStatus.Lost);
+        }
     }
     #endregion
 
