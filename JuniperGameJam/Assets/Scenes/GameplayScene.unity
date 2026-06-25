@@ -4644,6 +4644,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenZone
       objectReference: {fileID: 0}
+    - target: {fileID: 657679728907904582, guid: 6abfed73379e630439710b8788c58a9e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5432710885629473132, guid: 6abfed73379e630439710b8788c58a9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 248.85744
@@ -4683,6 +4687,10 @@ PrefabInstance:
     - target: {fileID: 5432710885629473132, guid: 6abfed73379e630439710b8788c58a9e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019854058450100213, guid: 6abfed73379e630439710b8788c58a9e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5024,6 +5032,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowZone
       objectReference: {fileID: 0}
+    - target: {fileID: 187494939943378191, guid: 1d1c49cd4889f2347a87ab27a1b6225f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8223620893652935710, guid: 1d1c49cd4889f2347a87ab27a1b6225f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 123.2
@@ -5077,9 +5089,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1302094693269968582, guid: 3695077938ae78f4582229dc3d160b1c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2614172746232581560, guid: 3695077938ae78f4582229dc3d160b1c, type: 3}
       propertyPath: m_Name
       value: BlueZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614172746232581560, guid: 3695077938ae78f4582229dc3d160b1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2831047753050004663, guid: 3695077938ae78f4582229dc3d160b1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5120,6 +5140,10 @@ PrefabInstance:
     - target: {fileID: 2831047753050004663, guid: 3695077938ae78f4582229dc3d160b1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964677948738083973, guid: 3695077938ae78f4582229dc3d160b1c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5199,6 +5223,10 @@ PrefabInstance:
     - target: {fileID: 5968186332961143067, guid: 7631d6537b59b8a43868c00e1a012be6, type: 3}
       propertyPath: m_Name
       value: RedZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968186332961143067, guid: 7631d6537b59b8a43868c00e1a012be6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9018646069713935003, guid: 7631d6537b59b8a43868c00e1a012be6, type: 3}
       propertyPath: m_LocalPosition.x
