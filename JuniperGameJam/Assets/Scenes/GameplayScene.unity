@@ -6007,6 +6007,10 @@ PrefabInstance:
       value: GameState
       objectReference: {fileID: 0}
     - target: {fileID: 7289163588138056521, guid: 32bd9dc90127ea04387c96ef897cf8e7, type: 3}
+      propertyPath: gameDuration
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7289163588138056521, guid: 32bd9dc90127ea04387c96ef897cf8e7, type: 3}
       propertyPath: OnGamePaused.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
