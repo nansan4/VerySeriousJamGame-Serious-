@@ -37,9 +37,7 @@ public class MainMenuUI : MonoBehaviour
         canvasGroup = gameObject.GetComponent<CanvasGroup>();
         PlayButton.onClick.AddListener(() =>
         {
-            giveCameraTwoPriority();
             StartCoroutine(FadeOut());
-
         });
 
         OptionsButton.onClick.AddListener(() =>
@@ -56,12 +54,6 @@ public class MainMenuUI : MonoBehaviour
                EditorApplication.isPlaying = false;
             }
         });
-
-        //CreditsButton.onClick.AddListener(() =>
-        //{
-        //    CreditsCanvas.Show();
-        //    Hide();
-        //});
     }
 
     private IEnumerator FadeOut()
@@ -100,18 +92,6 @@ public class MainMenuUI : MonoBehaviour
     {
         SceneManager.LoadScene(Globals.GAMEPLAY_SCENE_NAME);
         yield return null;
-    }
-
-    public void giveCameraOnePriority()
-    {
-        //_camera.Priority = 1;
-        //_camera2.Priority = 0;
-    }
-
-    public void giveCameraTwoPriority()
-    {
-        //_camera.Priority = 0;
-        //_camera2.Priority = 1;
     }
     private void Hide()
     {

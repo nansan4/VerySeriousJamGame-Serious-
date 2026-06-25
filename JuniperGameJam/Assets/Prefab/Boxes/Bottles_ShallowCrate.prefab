@@ -1573,7 +1573,7 @@ MonoBehaviour:
   hookDetectionTrigger: {fileID: 0}
   hookLoop: {fileID: 0}
   mat: {fileID: 0}
-  isFragile: 1
+  objectType: 0
   deliverAnywhere: 0
   breakForceThreshold: 5
   malfunctionAdditive: 0
