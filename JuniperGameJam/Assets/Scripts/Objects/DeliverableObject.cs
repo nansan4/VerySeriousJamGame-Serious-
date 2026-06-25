@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.VFX;
 
 /// <summary>
 /// The objects the player is delivering, it handles it's own delivery, disabling, and adding to object pool 
@@ -12,10 +13,14 @@ public class DeliverableObject : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private Collider hookDetectionTrigger;
     [SerializeField] private GameObject hookLoop;
-    [SerializeField] private Material mat;
+    [Tooltip("the parent object to which all meshes are parented, except VFX")]
+    [SerializeField] private GameObject boxObj;
+    [SerializeField] private VisualEffect vfx;
+
+    //[SerializeField] private Material mat;
 
     [Header("Instance Vars")]
-    // [SerializeField] private bool isFragile = false;
+    //[SerializeField] private bool isFragile = false;
     [SerializeField] private DeliverableObjectType objectType;
     [SerializeField] private bool deliverAnywhere = false;
     [SerializeField] private float breakForceThreshold = 1f;
@@ -28,12 +33,18 @@ public class DeliverableObject : MonoBehaviour
     #endregion
 
     #region Private Fields
-    private MeshRenderer _meshRenderer;
     private bool _isOnSurface = false;
     private bool _isOffHook = false;
     private float _currentMalfunctionChance;
     private GameObject _destination;
     private float _invalidityTime;
+    private GameObject _surface;
+    #endregion
+
+    #region Public Getters
+
+    public Transform BoxDeliveryDestination { get { return _destination.transform; } }
+
     #endregion
 
     #region Unity Lifecycle
@@ -43,7 +54,7 @@ public class DeliverableObject : MonoBehaviour
         //_invalidityTime = GameState.Instance.BoxInvalidityTime;
         _invalidityTime = 45f;
 
-        _meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        //_meshRenderer = gameObject.GetComponent<MeshRenderer>();
 
         //if (enableDebug) CheckDelivery();
 
@@ -57,9 +68,9 @@ public class DeliverableObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.impulse.magnitude > breakForceThreshold && objectType == DeliverableObjectType.Fragile)
+        if (collision.impulse.magnitude > breakForceThreshold && objectType == DeliverableObjectType.Fragile)
         {
-            //Debug.Log("impulse: " + collision.impulse.magnitude);
+            Debug.Log(gameObject + " impulse: " + collision.impulse.magnitude);
             BreakDeliverable();
             return;
         }
@@ -67,6 +78,7 @@ public class DeliverableObject : MonoBehaviour
         if(collision.collider.CompareTag("Delivery Surface") && (collision.gameObject == _destination || deliverAnywhere))
         {
             _isOnSurface = true;
+            _surface = deliverAnywhere ? collision.gameObject : _destination;
 
             CheckDelivery();
         }
@@ -117,9 +129,11 @@ public class DeliverableObject : MonoBehaviour
     }
     private void BreakDeliverable()
     {
-        Debug.Log("Box broke!");
+        Debug.Log(gameObject + "Box broke!");
         //pass reason to UI manager here also
         DeliveryManager.Instance.DecrementScore();
+
+        vfx.SendEvent("OnBoxDestroy");
 
         PrepareBoxDestroy();
     }
@@ -136,20 +150,21 @@ public class DeliverableObject : MonoBehaviour
             if(mal <= _currentMalfunctionChance)
             {
                 Debug.Log("Box loop malfunctioned!");
-                //play malfunction vfx here and skip over animation loop
+                //play malfunction vfx here
             }
             else
             {
+                                //or play anim here
                 Debug.Log("setting hook loop inactive");
                 hookLoop.SetActive(false);
-                //or play anim here
             }
 
             // minimal components + not happening often = prolly not a big issue
             if(_destination != null)
             {
-                _destination.TryGetComponent<DeliverySurface>(out DeliverySurface surface);
-                if (surface) surface.DeliverySequence();
+                //_destination.TryGetComponent<DeliverySurface>(out DeliverySurface surface);
+                //if (surface) surface.DeliverySequence();
+                _surface.GetComponent<DeliverySurface>()?.DeliverySequence();
                 StartCoroutine(DespawnRoutine());
             }
             else
@@ -164,7 +179,7 @@ public class DeliverableObject : MonoBehaviour
     {
         yield return new WaitForSeconds(despawnWaitTime);
 
-        _meshRenderer.enabled = false;
+        //_meshRenderer.enabled = false;
 
         PrepareBoxDestroy();
     }
@@ -174,15 +189,16 @@ public class DeliverableObject : MonoBehaviour
         Debug.Log("preparing box for destruction");
         //disable object components
         hookLoop.SetActive(false);
-        _meshRenderer.enabled = false;
+        boxObj.SetActive(false);
         col.enabled = false;
-        rb.useGravity = false;
+        //rb.useGravity = false;
         hookDetectionTrigger.enabled = false;
 
         StopCoroutine(InvalidityRoutine());
         DeliveryManager.Instance.DecrementBoxCount();
 
         BoxCleanupManager.Instance.AddObjectToDestroy(gameObject);
+        //gameObject.SetActive(false);
 
     }
     #endregion
