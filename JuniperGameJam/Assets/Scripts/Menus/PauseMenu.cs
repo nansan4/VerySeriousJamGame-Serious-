@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -46,7 +47,9 @@ public class PauseMenu : MonoBehaviour
 
     public void OnQuitButtonPressed()
     {
-        // Application.Quit();
+        // GameState.Instance.SetGamePaused(false);
+        // GameState.Instance.SetGameStatus(GameStatus.InProgress);
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     #endregion
