@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void UnsubscribeInputActions()
+    public void UnsubscribeInputActions()
     {
         // It is important to unbind and actions that we bind
         // when our object is destroyed, or this can cause issues

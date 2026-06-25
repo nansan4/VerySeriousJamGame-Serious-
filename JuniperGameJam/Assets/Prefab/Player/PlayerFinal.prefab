@@ -3423,6 +3423,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f9a7b04a4f1e348ec85c03e90fb31a23, type: 3}
   - {fileID: 8300000, guid: d1b7c7ca0112a453999f0ef23b4640c5, type: 3}
   collisionAudioSource: {fileID: 6911388283330159469}
+  backgroundMusicSource: {fileID: 7108147301626509103}
   deliveredClip: {fileID: 8300000, guid: ac399f1ce525448eaae73a975ec41dab, type: 3}
   failedClip: {fileID: 8300000, guid: ca5c7ffaf10a3497d8ce7d3694aa993f, type: 3}
   packageAudioSource: {fileID: 605794489489865657}

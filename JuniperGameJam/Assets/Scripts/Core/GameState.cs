@@ -49,11 +49,13 @@ public class GameState : MonoBehaviour
     //[SerializeField] private AudioSource playerDamageSound;
     [SerializeField] private float timeSpeedUpMultiplier = 1.0f;
     [Header("Game Stats")]
-    [SerializeField] private int maxScoreToWin = 100;
+    public int maxScoreToWin = 100;
     private int _currentScore = 0;
 
     [SerializeField] private bool isEndless;
     [SerializeField] private float gameDuration = 120f;
+    [SerializeField] private float timeRemaining;
+    private bool timerWarningPlayed = false;
 
     public int GameScore { get { return _currentScore; } }
     #endregion
@@ -129,6 +131,8 @@ public class GameState : MonoBehaviour
 
         UI_Manager.instance.SetTotalPackages(maxScoreToWin);
         UI_Manager.instance.SetTimeRemaining(gameDuration);
+
+        timeRemaining = gameDuration;
     }
 
     private void GameStatusChanged(GameStatus gameStatus)
@@ -143,6 +147,31 @@ public class GameState : MonoBehaviour
             else
             {
                 UI_Manager.instance.SetTimeRemaining(-1f);
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (!isEndless && currentGameStatus == GameStatus.InProgress)
+        {
+            timeRemaining -= Time.fixedDeltaTime;
+
+            if (timeRemaining <= 10f && !timerWarningPlayed)
+            {
+                PlayerAudioManager.Instance.PlayTimerWarningSFX();
+                timerWarningPlayed = true;
+            }
+
+            if (_currentScore >= maxScoreToWin)
+            {
+                SetGameStatus(GameStatus.PlayerWon);
+                OnWin?.Invoke();
+            }
+            else if (_currentScore < maxScoreToWin && timeRemaining <= 0f)
+            {
+                SetGameStatus(GameStatus.PlayerLost);
+                OnLose?.Invoke();
             }
         }
     }
@@ -214,6 +243,8 @@ public class GameState : MonoBehaviour
         SetGameStatus(GameStatus.Initializing);
 
         //reset other info here (lives, timer, etc.)
+        timeRemaining = gameDuration; // reset the timer
+        timerWarningPlayed = false; // reset the timer warning flag
     }
     #endregion
 
