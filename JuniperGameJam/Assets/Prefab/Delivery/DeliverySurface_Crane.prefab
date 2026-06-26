@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a53ddcd7711f4348bc44048587b1afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeliverySurface
-  rejectionTime: 7
+  rejectionTime: 12
   markerTransform: {fileID: 4266782828767966021}
   fireVfx: {fileID: 8104717591793859890}
   brazier: {fileID: 8429770956780780962}

@@ -446,7 +446,7 @@ MonoBehaviour:
   deliverAnywhere: 0
   breakForceThreshold: 1
   malfunctionAdditive: 0.27
-  despawnWaitTime: 15
+  despawnWaitTime: 8
   enableDebug: 0
 --- !u!1001 &2212028966415777023
 PrefabInstance:

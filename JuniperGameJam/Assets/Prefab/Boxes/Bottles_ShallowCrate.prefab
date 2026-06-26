@@ -441,9 +441,9 @@ MonoBehaviour:
   loopAnimator: {fileID: 8717544934389201405}
   objectType: 0
   deliverAnywhere: 0
-  breakForceThreshold: 22
+  breakForceThreshold: 12
   malfunctionAdditive: 0.15
-  despawnWaitTime: 15
+  despawnWaitTime: 8
   enableDebug: 0
 --- !u!1001 &342468246634211616
 PrefabInstance:

@@ -512,6 +512,7 @@ MonoBehaviour:
   boxObj: {fileID: 0}
   breakVfx: {fileID: 0}
   malfunctionVfx: {fileID: 0}
+  loopAnimator: {fileID: 0}
   objectType: 0
   deliverAnywhere: 0
   breakForceThreshold: 1
@@ -4170,6 +4171,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1106769174626358209, guid: ec35ef78de07f474584996a3fd78bf5e, type: 3}
+      propertyPath: cooldownTime
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1188727787552757363, guid: ec35ef78de07f474584996a3fd78bf5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.899994
@@ -4233,6 +4238,10 @@ PrefabInstance:
     - target: {fileID: 3857173874090853296, guid: ec35ef78de07f474584996a3fd78bf5e, type: 3}
       propertyPath: m_Name
       value: TownSquareZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539356781192581358, guid: ec35ef78de07f474584996a3fd78bf5e, type: 3}
+      propertyPath: spawnAfterCooldown
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7770094652425850390, guid: ec35ef78de07f474584996a3fd78bf5e, type: 3}
       propertyPath: m_LocalPosition.x
