@@ -17,6 +17,7 @@ public class DeliverableObject : MonoBehaviour
     [SerializeField] private GameObject boxObj;
     [SerializeField] private VisualEffect breakVfx;
     [SerializeField] private VisualEffect malfunctionVfx;
+    [SerializeField] private Animator loopAnimator;
 
     //[SerializeField] private Material mat;
 
@@ -167,9 +168,10 @@ public class DeliverableObject : MonoBehaviour
             }
             else
             {
-                                //or play anim here
+                //or play anim here
                 //Debug.Log("setting hook loop inactive");
-                hookLoop.SetActive(false);
+                loopAnimator.SetTrigger("Open");
+                //hookLoop.SetActive(false);
             }
 
             // minimal components + not happening often = prolly not a big issue

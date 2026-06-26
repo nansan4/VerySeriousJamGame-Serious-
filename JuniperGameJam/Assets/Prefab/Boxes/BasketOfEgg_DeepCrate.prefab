@@ -560,6 +560,7 @@ MonoBehaviour:
   boxObj: {fileID: 4766650650174589229}
   breakVfx: {fileID: 868423868349553596}
   malfunctionVfx: {fileID: 1016863963450678566}
+  loopAnimator: {fileID: 3959397559233920023}
   objectType: 0
   deliverAnywhere: 0
   breakForceThreshold: 11
@@ -615,6 +616,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6245746164710727618, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+      propertyPath: BoxDetector
+      value: 
+      objectReference: {fileID: 4766650650174589229}
+    - target: {fileID: 6245746164710727618, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
       propertyPath: DeliverableObject
       value: 
       objectReference: {fileID: 3361256088134049935}
@@ -639,6 +644,11 @@ VisualEffect:
 --- !u!135 &1646124212691058871 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 6634065883315367037, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+  m_PrefabInstance: {fileID: 5388797723003727050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3959397559233920023 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8951539641505124573, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
   m_PrefabInstance: {fileID: 5388797723003727050}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5181828724258893734 stripped

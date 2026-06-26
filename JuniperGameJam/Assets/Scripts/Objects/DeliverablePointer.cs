@@ -7,6 +7,7 @@ public class DeliverablePointer : MonoBehaviour
 {
     
     [SerializeField] private DeliverableObject DeliverableObject;
+    [SerializeField] private GameObject BoxDetector;
 
     private Transform DeliveryPointTransform;
 
@@ -37,6 +38,11 @@ public class DeliverablePointer : MonoBehaviour
         if (LookAtTarget)
         {
             transform.LookAt(LookAtTarget);
+        }
+
+        if (!BoxDetector.activeSelf)
+        {
+            Destroy(this);
         }
         
     }
