@@ -26,6 +26,8 @@ public class DeliverySurface : MonoBehaviour
 
         DeliveryManager.Instance.IncrementScore();
         DeliveryManager.Instance.SpawnDeliverables(false);
+
+        StartCoroutine(CooldownRoutine());
     }
 
     public void RejectSequence()

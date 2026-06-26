@@ -49,7 +49,7 @@ public class ObjectSpawner : MonoBehaviour
         DeliverableObject obj = Instantiate(prefabDeliverables.GetRandomItem(), spawnTransform.position, Quaternion.identity);
         Transform dest = DeliveryManager.Instance.SetDeliveryDestination(obj);
 
-        Debug.Log("force spawning object: " + obj + ", at: " + spawnTransform.position + ", for destination: " + dest.position);
+        //Debug.Log("force spawning object: " + obj + ", at: " + spawnTransform.position + ", for destination: " + dest.position);
 
         _hasObjectSpawned = true;
         DeliveryManager.Instance.IncrementBoxCount();

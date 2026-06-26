@@ -271,6 +271,7 @@ MonoBehaviour:
   maxWalkSpeed: 8
   maxVerticalSpeed: 5.5
   minimumWorldHeight: 0.5
+  maximumWorldHeight: 40
   jumpForce: 15
   jumpForceAcceleration: 0.09
   jumpForceDeceleration: 0.015

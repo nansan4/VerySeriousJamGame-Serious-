@@ -179,7 +179,39 @@ VisualEffect:
     m_AnimationCurve:
       m_Array: []
     m_Gradient:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.4910209, g: 0.5209957, b: 0.45641106, a: 1}
+          key1: {r: 0.023153365, g: 0.057805434, b: 0.02121901, a: 0.8}
+          key2: {r: 0.018500218, g: 0.008023192, b: 0.018500218, a: 0}
+          key3: {r: 0.039546248, g: 0.014443844, b: 0.012983031, a: 0}
+          key4: {r: 0.0018211621, g: 0.000607054, b: 0.000303527, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 8712
+          ctime1: 37702
+          ctime2: 47262
+          ctime3: 56052
+          ctime4: 65535
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 28450
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 1
+          m_ColorSpace: 1
+          m_NumColorKeys: 5
+          m_NumAlphaKeys: 2
+        m_Name: Colors
+        m_Overridden: 1
     m_NamedObject:
       m_Array: []
     m_Bool:
@@ -340,7 +372,7 @@ GameObject:
   - component: {fileID: 4028063197967311101}
   m_Layer: 7
   m_Name: ClothV2_ShallowCrate
-  m_TagString: Untagged
+  m_TagString: Deliverable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,11 +439,12 @@ MonoBehaviour:
   hookDetectionTrigger: {fileID: 4801500645026353282}
   hookLoop: {fileID: 1410721382389120915}
   boxObj: {fileID: 2026392406234010164}
-  vfx: {fileID: 3984843774771304583}
+  breakVfx: {fileID: 3984843774771304583}
+  malfunctionVfx: {fileID: 6514120656460418323}
   objectType: 1
   deliverAnywhere: 0
   breakForceThreshold: 1
-  malfunctionAdditive: 0
+  malfunctionAdditive: 0.27
   despawnWaitTime: 15
   enableDebug: 0
 --- !u!1001 &2212028966415777023
@@ -470,6 +503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UniversalLoop (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9213475636979692981, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -488,5 +525,10 @@ Transform:
 --- !u!135 &4801500645026353282 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 6634065883315367037, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+  m_PrefabInstance: {fileID: 2212028966415777023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &6514120656460418323 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 4959723888269177324, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
   m_PrefabInstance: {fileID: 2212028966415777023}
   m_PrefabAsset: {fileID: 0}

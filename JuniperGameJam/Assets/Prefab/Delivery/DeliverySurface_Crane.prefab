@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 2479207312119884615}
   m_Layer: 0
   m_Name: DeliverySurface_Crane
-  m_TagString: Untagged
+  m_TagString: Delivery Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

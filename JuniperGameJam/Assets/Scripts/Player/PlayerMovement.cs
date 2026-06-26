@@ -15,6 +15,7 @@ public class PlayerMovement : BaseMovement
     [SerializeField] private float maxWalkSpeed = 1f;           // The max horizontal speed of this character (when walking) in m/s
     [SerializeField] private float maxVerticalSpeed = 10f;      // The maximum vertical move speed of this character in m/s
     [SerializeField] private float minimumWorldHeight = 0.5f;   // The minimum height the character's pivot can go before being set to this value
+    [SerializeField] private float maximumWorldHeight = 25f;    // The max height WS the character can go
 
     [Header("Character - Air Movement")]
     [SerializeField] protected float jumpForce = 6f;            // The amount of power used by this character to jump.
@@ -184,6 +185,14 @@ public class PlayerMovement : BaseMovement
             rb.linearVelocity = vel;
             //clamp player y pos to minimum world height
             rb.position = new Vector3(rb.position.x, minimumWorldHeight, rb.position.z);
+        }
+
+        if(transform.position.y > maximumWorldHeight)
+        {
+            Vector3 vel = rb.linearVelocity;
+            vel.y = 0f;
+            rb.linearVelocity = vel;
+            rb.position = new Vector3(rb.position.x, maximumWorldHeight, rb.position.z);
         }
     }
 

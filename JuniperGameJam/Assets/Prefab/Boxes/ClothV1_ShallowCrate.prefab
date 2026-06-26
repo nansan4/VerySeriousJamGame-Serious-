@@ -275,7 +275,39 @@ VisualEffect:
     m_AnimationCurve:
       m_Array: []
     m_Gradient:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.039546248, g: 0.095307484, b: 0.038204376, a: 1}
+          key1: {r: 0.03189604, g: 0.09989874, b: 0.10702311, a: 1}
+          key2: {r: 0.5028866, g: 0.5394797, b: 0.48514998, a: 1}
+          key3: {r: 0.40197787, g: 0.32777813, b: 0.16202943, a: 0}
+          key4: {r: 0.010960094, g: 0.015208514, b: 0.015996292, a: 0}
+          key5: {r: 0.015996292, g: 0.008023192, b: 0.014443844, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 9021
+          ctime1: 23053
+          ctime2: 34155
+          ctime3: 36468
+          ctime4: 52197
+          ctime5: 56052
+          ctime6: 65535
+          ctime7: 0
+          atime0: 28450
+          atime1: 56669
+          atime2: 65535
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 1
+          m_ColorSpace: 1
+          m_NumColorKeys: 7
+          m_NumAlphaKeys: 3
+        m_Name: Colors
+        m_Overridden: 1
     m_NamedObject:
       m_Array: []
     m_Bool:
@@ -340,7 +372,7 @@ GameObject:
   - component: {fileID: 7120457519740182930}
   m_Layer: 7
   m_Name: ClothV1_ShallowCrate
-  m_TagString: Untagged
+  m_TagString: Deliverable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,7 +439,8 @@ MonoBehaviour:
   hookDetectionTrigger: {fileID: 6233749234831053565}
   hookLoop: {fileID: 554788400699604460}
   boxObj: {fileID: 2026392406234010164}
-  vfx: {fileID: 616559846518774691}
+  breakVfx: {fileID: 616559846518774691}
+  malfunctionVfx: {fileID: 5640244762301075308}
   objectType: 1
   deliverAnywhere: 0
   breakForceThreshold: 1
@@ -470,6 +503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UniversalLoop (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9213475636979692981, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -483,6 +520,11 @@ GameObject:
 --- !u!4 &2424537111868926677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3114232044067607637, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+  m_PrefabInstance: {fileID: 761765995831049856}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &5640244762301075308 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 4959723888269177324, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
   m_PrefabInstance: {fileID: 761765995831049856}
   m_PrefabAsset: {fileID: 0}
 --- !u!135 &6233749234831053565 stripped

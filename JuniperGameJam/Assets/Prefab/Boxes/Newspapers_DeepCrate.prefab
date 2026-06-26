@@ -179,7 +179,39 @@ VisualEffect:
     m_AnimationCurve:
       m_Array: []
     m_Gradient:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.0047769533, g: 0.0060488326, b: 0.008568125, a: 1}
+          key1: {r: 0.31854683, g: 0.35640025, b: 0.40197787, a: 0.8}
+          key2: {r: 0.14126332, g: 0.116970696, b: 0.09084173, a: 0}
+          key3: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 9021
+          ctime1: 45566
+          ctime2: 65535
+          ctime3: 0
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 28450
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 1
+          m_ColorSpace: 1
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 2
+        m_Name: Colors
+        m_Overridden: 1
     m_NamedObject:
       m_Array: []
     m_Bool:
@@ -335,7 +367,7 @@ GameObject:
   - component: {fileID: 5361644596766839293}
   m_Layer: 7
   m_Name: Newspapers_DeepCrate
-  m_TagString: Untagged
+  m_TagString: Deliverable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -402,7 +434,8 @@ MonoBehaviour:
   hookDetectionTrigger: {fileID: 5493757494166032214}
   hookLoop: {fileID: 2093056377775398983}
   boxObj: {fileID: 1456287983887049285}
-  vfx: {fileID: 9097479694808445121}
+  breakVfx: {fileID: 9097479694808445121}
+  malfunctionVfx: {fileID: 6122971389049262791}
   objectType: 1
   deliverAnywhere: 0
   breakForceThreshold: 1
@@ -465,6 +498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UniversalLoop (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9213475636979692981, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -483,5 +520,10 @@ Transform:
 --- !u!135 &5493757494166032214 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 6634065883315367037, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+  m_PrefabInstance: {fileID: 1165676461561275179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &6122971389049262791 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 4959723888269177324, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
   m_PrefabInstance: {fileID: 1165676461561275179}
   m_PrefabAsset: {fileID: 0}
