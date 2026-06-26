@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffbf4325c0caee419d36d09c83f7f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeliverablePointer
-  Deliverable: {fileID: 0}
+  DeliverableObject: {fileID: 0}
+  BoxDetector: {fileID: 0}
 --- !u!1 &8890833095198380017
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +113,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4718860083223050195, guid: c0d7fd4139db9be49ac04e28758a290f, type: 3}
+  - {fileID: 2100000, guid: 190146928ab5d7742933829fa8398cd0, type: 2}
   - {fileID: -4552132060980122340, guid: c0d7fd4139db9be49ac04e28758a290f, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
