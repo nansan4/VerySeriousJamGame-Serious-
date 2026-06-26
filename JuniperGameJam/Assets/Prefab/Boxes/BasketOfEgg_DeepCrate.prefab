@@ -458,8 +458,8 @@ GameObject:
   - component: {fileID: 1722685096869262804}
   - component: {fileID: 3361256088134049935}
   m_Layer: 7
-  m_Name: BasketOfEgg_DeepCrate 3
-  m_TagString: Untagged
+  m_Name: BasketOfEgg_DeepCrate
+  m_TagString: Deliverable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,7 +529,7 @@ MonoBehaviour:
   vfx: {fileID: 868423868349553596}
   objectType: 0
   deliverAnywhere: 0
-  breakForceThreshold: 10
+  breakForceThreshold: 13
   malfunctionAdditive: 0
   despawnWaitTime: 15
   enableDebug: 0
@@ -588,6 +588,10 @@ PrefabInstance:
     - target: {fileID: 9213475636979692981, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
       propertyPath: m_Name
       value: UniversalLoop (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213475636979692981, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

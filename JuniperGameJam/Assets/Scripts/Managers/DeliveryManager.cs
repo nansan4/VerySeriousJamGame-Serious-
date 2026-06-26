@@ -90,7 +90,7 @@ public class DeliveryManager : MonoBehaviour
         if( _boxCount <= 0)
         {
             _boxCount = 0;
-            Debug.Log("box count is " + _boxCount + ", force spawning more boxes");
+            //Debug.Log("box count is " + _boxCount + ", force spawning more boxes");
             SpawnDeliverables(true);
         }
     }
@@ -110,7 +110,7 @@ public class DeliveryManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        Debug.Log("about to spawn " + rand + " boxes");
+        //Debug.Log("about to spawn " + rand + " boxes");
         while (count < rand)
         {
             objectSpawners[idx].SpawnDeliverable();
@@ -132,7 +132,7 @@ public class DeliveryManager : MonoBehaviour
 
         yield return new WaitForSeconds(10f);
 
-        Debug.Log("about to spawn " + rand + " boxes");
+        //Debug.Log("about to spawn " + rand + " boxes");
 
         while(count < rand)
         {
