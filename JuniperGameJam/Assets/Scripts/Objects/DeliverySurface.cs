@@ -7,7 +7,7 @@ using UnityEngine.VFX;
 /// </summary>
 public class DeliverySurface : MonoBehaviour
 {
-    [SerializeField] private float rejectionTime = 7f;
+    [SerializeField] private float rejectionTime = 14f;
     [SerializeField] private Transform markerTransform;
     [SerializeField] private VisualEffect fireVfx;
     [SerializeField] private DeliveryBrazier brazier;

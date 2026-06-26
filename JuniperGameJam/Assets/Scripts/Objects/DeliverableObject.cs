@@ -205,7 +205,22 @@ public class DeliverableObject : MonoBehaviour
     {
         yield return new WaitForSeconds(despawnWaitTime);
 
-        //_meshRenderer.enabled = false;
+        float duration = 2f;
+        float elapsed = 0f;
+
+        Vector3 startingScale = transform.localScale;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float progress = Mathf.Clamp01(elapsed / duration);
+            transform.localScale = Vector3.Lerp(startingScale, Vector3.zero, progress);
+
+            yield return null;
+        }
+
+        transform.localScale = Vector3.zero;
 
         PrepareBoxDestroy();
     }

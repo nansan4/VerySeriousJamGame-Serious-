@@ -562,7 +562,7 @@ MonoBehaviour:
   malfunctionVfx: {fileID: 1016863963450678566}
   objectType: 0
   deliverAnywhere: 0
-  breakForceThreshold: 18
+  breakForceThreshold: 11
   malfunctionAdditive: 0.81
   despawnWaitTime: 15
   enableDebug: 0
