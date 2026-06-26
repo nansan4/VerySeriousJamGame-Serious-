@@ -441,6 +441,7 @@ MonoBehaviour:
   boxObj: {fileID: 2026392406234010164}
   breakVfx: {fileID: 616559846518774691}
   malfunctionVfx: {fileID: 5640244762301075308}
+  loopAnimator: {fileID: 8550110020791348829}
   objectType: 1
   deliverAnywhere: 0
   breakForceThreshold: 1
@@ -530,5 +531,10 @@ VisualEffect:
 --- !u!135 &6233749234831053565 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 6634065883315367037, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+  m_PrefabInstance: {fileID: 761765995831049856}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8550110020791348829 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8951539641505124573, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
   m_PrefabInstance: {fileID: 761765995831049856}
   m_PrefabAsset: {fileID: 0}
