@@ -19,8 +19,9 @@ public class DeliverablePointer : MonoBehaviour
 
     private void Start()
     {
-
-        gameObject.SetActive(false);
+        StartCoroutine(DelaySetTransform());
+        //gameObject.SetActive(false);
+        
     }
 
 
@@ -37,6 +38,7 @@ public class DeliverablePointer : MonoBehaviour
         {
             transform.LookAt(LookAtTarget);
         }
+        
     }
 
     public void OnGetLocation(Transform deliverylocation)

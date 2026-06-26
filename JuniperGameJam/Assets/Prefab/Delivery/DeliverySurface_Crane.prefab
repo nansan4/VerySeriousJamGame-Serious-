@@ -134,6 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1243996649053386293}
   - component: {fileID: 3482712141584955794}
+  - component: {fileID: 2479207312119884615}
   m_Layer: 0
   m_Name: DeliverySurface_Crane
   m_TagString: Untagged
@@ -174,6 +175,27 @@ MonoBehaviour:
   markerTransform: {fileID: 4266782828767966021}
   fireVfx: {fileID: 8104717591793859890}
   brazier: {fileID: 8429770956780780962}
+--- !u!65 &2479207312119884615
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8133417574997914881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.1404915, y: 0.7631222, z: 5.1296763}
+  m_Center: {x: 5.41292, y: -0.89949423, z: -0.025396585}
 --- !u!1001 &6881693087784005735
 PrefabInstance:
   m_ObjectHideFlags: 0
