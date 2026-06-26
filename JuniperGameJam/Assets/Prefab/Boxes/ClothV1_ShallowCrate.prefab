@@ -497,6 +497,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6245746164710727618, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+      propertyPath: BoxDetector
+      value: 
+      objectReference: {fileID: 2026392406234010164}
+    - target: {fileID: 6245746164710727618, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
       propertyPath: DeliverableObject
       value: 
       objectReference: {fileID: 7120457519740182930}
