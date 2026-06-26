@@ -213,7 +213,39 @@ VisualEffect:
     m_AnimationCurve:
       m_Array: []
     m_Gradient:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.3662527, g: 0.3515327, b: 0.2581829, a: 1}
+          key1: {r: 0.116970696, g: 0.09758736, b: 0.048171833, a: 0.8}
+          key2: {r: 0.46207705, g: 0.5457247, b: 0.61720675, a: 0}
+          key3: {r: 0.06666667, g: 0.02656873, b: 0.011764706, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 15806
+          ctime1: 17502
+          ctime2: 53585
+          ctime3: 65535
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 28450
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 1
+          m_ColorSpace: 1
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 2
+        m_Name: Colors
+        m_Overridden: 1
     m_NamedObject:
       m_Array: []
     m_Bool:
@@ -526,11 +558,12 @@ MonoBehaviour:
   hookDetectionTrigger: {fileID: 1646124212691058871}
   hookLoop: {fileID: 5181828724258893734}
   boxObj: {fileID: 4766650650174589229}
-  vfx: {fileID: 868423868349553596}
+  breakVfx: {fileID: 868423868349553596}
+  malfunctionVfx: {fileID: 1016863963450678566}
   objectType: 0
   deliverAnywhere: 0
-  breakForceThreshold: 13
-  malfunctionAdditive: 0
+  breakForceThreshold: 18
+  malfunctionAdditive: 0.81
   despawnWaitTime: 15
   enableDebug: 0
 --- !u!1001 &5388797723003727050
@@ -598,6 +631,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+--- !u!2083052967 &1016863963450678566 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 4959723888269177324, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
+  m_PrefabInstance: {fileID: 5388797723003727050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!135 &1646124212691058871 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 6634065883315367037, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}

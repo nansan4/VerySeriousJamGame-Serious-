@@ -15,7 +15,8 @@ public class DeliverableObject : MonoBehaviour
     [SerializeField] private GameObject hookLoop;
     [Tooltip("the parent object to which all meshes are parented, except VFX")]
     [SerializeField] private GameObject boxObj;
-    [SerializeField] private VisualEffect vfx;
+    [SerializeField] private VisualEffect breakVfx;
+    [SerializeField] private VisualEffect malfunctionVfx;
 
     //[SerializeField] private Material mat;
 
@@ -42,6 +43,8 @@ public class DeliverableObject : MonoBehaviour
     private GameObject _destination;
     private float _invalidityTime;
     private GameObject _surface;
+    private Coroutine _invalidityRoutine;
+    private Coroutine _deliveryRoutine;
     #endregion
 
     #region Public Getters
@@ -60,8 +63,7 @@ public class DeliverableObject : MonoBehaviour
         //_meshRenderer = gameObject.GetComponent<MeshRenderer>();
 
         //if (enableDebug) CheckDelivery();
-
-        StartCoroutine(InvalidityRoutine());
+        _invalidityRoutine = StartCoroutine(InvalidityRoutine());
     }
     #endregion
 
@@ -85,7 +87,7 @@ public class DeliverableObject : MonoBehaviour
 
             Debug.Log("On Surface");
 
-            if (!_isCheckingDelivery) StartCoroutine(CheckDeliveryRoutine());
+            if (!_isCheckingDelivery) { _deliveryRoutine = StartCoroutine(CheckDeliveryRoutine()); }
         }
         else if(collision.collider.CompareTag("Delivery Surface") && collision.gameObject != _destination)
         {
@@ -108,8 +110,6 @@ public class DeliverableObject : MonoBehaviour
         if (other.gameObject.CompareTag("Hook"))
         {
             _isOffHook = true;
-
-            if (!_isCheckingDelivery) StartCoroutine(InvalidityRoutine());
         }
     }
 
@@ -118,7 +118,8 @@ public class DeliverableObject : MonoBehaviour
         if (other.gameObject.CompareTag("Hook"))
         {
             _isOffHook = false;
-            StopCoroutine(InvalidityRoutine());
+            //Debug.Log("is on hook now");
+            StopCoroutine(_invalidityRoutine);
             //if(!_isCheckingDelivery) StartCoroutine(CheckDeliveryRoutine());
         }
     }
@@ -129,11 +130,13 @@ public class DeliverableObject : MonoBehaviour
     {
         //Debug.Log("starting invalidity routine");
         yield return new WaitForSeconds(_invalidityTime);
-        //Debug.Log("box is invalid now");
-        DeliveryManager.Instance.DecrementScore();
-        //pass reason to ui manager to display
+        Debug.Log("box is invalid now");
 
-        PrepareBoxDestroy();
+        if (_isOffHook)
+        {
+            DeliveryManager.Instance.DecrementScore();
+            PrepareBoxDestroy();
+        }
     }
     private void BreakDeliverable()
     {
@@ -143,7 +146,7 @@ public class DeliverableObject : MonoBehaviour
         //pass reason to UI manager here also
         DeliveryManager.Instance.DecrementScore();
 
-        vfx.SendEvent("OnBoxDestroy");
+        breakVfx.SendEvent("OnBoxDestroy");
 
         PrepareBoxDestroy();
     }
@@ -160,7 +163,7 @@ public class DeliverableObject : MonoBehaviour
             if(mal <= _currentMalfunctionChance)
             {
                 //Debug.Log("Box loop malfunctioned!");
-                //play malfunction vfx here
+                malfunctionVfx.SendEvent("OnBoxMalfunction");
             }
             else
             {
@@ -217,8 +220,8 @@ public class DeliverableObject : MonoBehaviour
         //rb.useGravity = false;
         hookDetectionTrigger.enabled = false;
 
-        StopCoroutine(InvalidityRoutine());
-        StopCoroutine(CheckDeliveryRoutine());
+        StopCoroutine(_invalidityRoutine);
+        StopCoroutine(_deliveryRoutine);
         DeliveryManager.Instance.DecrementBoxCount();
 
         BoxCleanupManager.Instance.AddObjectToDestroy(gameObject);
