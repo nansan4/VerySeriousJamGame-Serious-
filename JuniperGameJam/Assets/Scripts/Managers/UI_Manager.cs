@@ -39,6 +39,9 @@ public class UI_Manager : MonoBehaviour
     {
         GameState.Instance.OnGamePaused.AddListener(Hide);
         GameState.Instance.OnGameResumed.AddListener(Show);
+
+        timeRemaining = GameState.Instance.GameDuration;
+        SetTotalPackages(GameState.Instance.MaxScoreToWin);
     }
 
     void FixedUpdate()
@@ -82,7 +85,7 @@ public class UI_Manager : MonoBehaviour
 
     private void UpdateTotalText()
     {
-        totalText.text = $"{deliveredPackages + missedPackages}/{totalPackages}";
+        totalText.text = $"Score to Win: {deliveredPackages + missedPackages}/{totalPackages}";
     }
     #endregion
 

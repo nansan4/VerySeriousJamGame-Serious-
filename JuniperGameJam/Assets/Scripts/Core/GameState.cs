@@ -58,6 +58,8 @@ public class GameState : MonoBehaviour
     private bool timerWarningPlayed = false;
 
     public int GameScore { get { return _currentScore; } }
+    public float GameDuration { get { return gameDuration; } }
+    public int MaxScoreToWin { get { return maxScoreToWin; } }
     #endregion
 
     #region Difficulty Params
@@ -129,8 +131,8 @@ public class GameState : MonoBehaviour
         //}
         OnGameStatusChanged.AddListener(GameStatusChanged);
 
-        UI_Manager.instance.SetTotalPackages(maxScoreToWin);
-        UI_Manager.instance.SetTimeRemaining(gameDuration);
+        //UI_Manager.instance.SetTotalPackages(maxScoreToWin);
+        //UI_Manager.instance.SetTimeRemaining(GameDuration);
 
         timeRemaining = gameDuration;
     }

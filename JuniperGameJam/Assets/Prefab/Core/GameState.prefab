@@ -46,7 +46,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameState
   usedTimeScale: 1
   _impulseSource: {fileID: 0}
+  currentGameStatus: 0
   timeSpeedUpMultiplier: 1
+  maxScoreToWin: 10
+  isEndless: 0
+  gameDuration: 480
+  timeRemaining: 0
+  _boxMalfunctionBaseChance_Normal: 1
+  _boxMalfunctionBaseChance_Hard: 1
+  _boxInvalidityBaseTime_Normal: 60
+  _boxInvalidityBaseTime_Hard: 30
+  _initialSpawnDelayBaseTime_Normal: 5
+  _initialSpawnDelayBaseTime_Hard: 5
+  _initialSpawnDelayTime: 0
   OnGamePaused:
     m_PersistentCalls:
       m_Calls: []
