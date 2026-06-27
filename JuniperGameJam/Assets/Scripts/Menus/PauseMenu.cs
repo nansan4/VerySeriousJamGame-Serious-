@@ -49,6 +49,7 @@ public class PauseMenu : MonoBehaviour
     {
         // GameState.Instance.SetGamePaused(false);
         // GameState.Instance.SetGameStatus(GameStatus.InProgress);
+        Cursor.visible = true;
         SceneManager.LoadScene("MainMenuScene");
     }
 

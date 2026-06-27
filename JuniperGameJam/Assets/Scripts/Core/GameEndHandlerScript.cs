@@ -30,6 +30,7 @@ public class GameEndHandlerScript : MonoBehaviour
         PlayerAudioManager.Instance.FadeOutBGMusic(1.0f);
         UI_Manager.instance.Hide();
         GameState.Instance.OnLose.RemoveListener(HandleGameLost);
+        Cursor.visible = true;
         gameOverUI.SetActive(true);
         scoreText.text = "Score: " + GameState.Instance.GameScore + "/" + GameState.Instance.maxScoreToWin;
         playerController.UnsubscribeInputActions();
@@ -40,6 +41,7 @@ public class GameEndHandlerScript : MonoBehaviour
         PlayerAudioManager.Instance.FadeOutBGMusic(0.5f);
         UI_Manager.instance.Hide();
         GameState.Instance.OnWin.RemoveListener(HandleGameWon);
+        Cursor.visible = true;
         gameWonUI.SetActive(true);
         winSound.PlayOneShot(winSoundClip);
         playerController.UnsubscribeInputActions();
