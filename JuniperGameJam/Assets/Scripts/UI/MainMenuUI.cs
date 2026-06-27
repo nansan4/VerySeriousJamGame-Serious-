@@ -10,7 +10,9 @@ public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private Button PlayButton;
     [SerializeField] private Button OptionsButton;
+    [SerializeField] private Button HowToPlayButton;
     [SerializeField] private Button QuitButton;
+    [SerializeField] private Canvas HowToPlayCanvas;
     [SerializeField] private OptionsUI OptionsCanvas;
     [SerializeField] private Button CreditsButton;
     [SerializeField] private CreditsUI CreditsCanvas;
@@ -45,6 +47,12 @@ public class MainMenuUI : MonoBehaviour
             OptionsCanvas.Show();
             Hide();
         });
+        HowToPlayButton.onClick.AddListener(() =>
+        {
+            HowToPlayCanvas.enabled = true;
+            //Hide();
+        });
+
 
         QuitButton.onClick.AddListener(() =>
         {
