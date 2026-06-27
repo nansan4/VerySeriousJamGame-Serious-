@@ -49,7 +49,11 @@ public class PauseMenu : MonoBehaviour
     {
         // GameState.Instance.SetGamePaused(false);
         // GameState.Instance.SetGameStatus(GameStatus.InProgress);
-        Cursor.visible = true;
+        //Time.timeScale = 1;
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.Confined;
+        //GameState.Instance.SetGamePaused(false);
+        //GameState.Instance.SetGameStatus(GameStatus.Initializing);
         SceneManager.LoadScene("MainMenuScene");
     }
 

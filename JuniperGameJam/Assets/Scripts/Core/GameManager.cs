@@ -34,7 +34,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
+        Debug.Log("GameManager Start");
+
         gameState = GameState.Instance;
+
+        Debug.Log($"Status at Start: {gameState.CurrentGameStatus}");
         if (gameState.CurrentGameStatus == GameStatus.Initializing)
         {
             StartCoroutine(InitialSpawnRoutine());
@@ -86,6 +91,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(gameState.InitialSpawnDelayTime);
         Debug.Log("initially spawning boxes");
         DeliveryManager.Instance.SpawnDeliverables(true);
+
+        gameState.SetGameStatus(GameStatus.InProgress);
     }
 
     public void IncrementScore()

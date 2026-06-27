@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         // GameState callback listeners (call in Start to ensure GameState.Instance is ready)
         GameState.Instance.OnGamePaused.AddListener(OnGamePausedReceived);
         GameState.Instance.OnGameResumed.AddListener(OnGameResumedReceived);
-        GameState.Instance.SetGameStatus(GameStatus.InProgress); // Set the game status to InProgress at the start of the game
+        //GameState.Instance.SetGameStatus(GameStatus.InProgress); // Set the game status to InProgress at the start of the game // this shit be breaking the game
     }
 
     private void OnEnable()

@@ -245,6 +245,7 @@ public class GameState : MonoBehaviour
         SetGameStatus(GameStatus.Initializing);
 
         //reset other info here (lives, timer, etc.)
+        Cursor.lockState = CursorLockMode.Confined;
         timeRemaining = gameDuration; // reset the timer
         timerWarningPlayed = false; // reset the timer warning flag
     }

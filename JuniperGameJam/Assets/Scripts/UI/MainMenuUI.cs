@@ -63,7 +63,7 @@ public class MainMenuUI : MonoBehaviour
             //}
         });
     }
-
+  
     private IEnumerator FadeOut()
     {
         while (canvasGroup.alpha > 0.01f)
