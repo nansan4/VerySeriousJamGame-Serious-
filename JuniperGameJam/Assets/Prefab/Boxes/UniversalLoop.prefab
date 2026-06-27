@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 891545562146390516}
   m_Layer: 7
   m_Name: CrateBrace
-  m_TagString: Untagged
+  m_TagString: Deliverable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 6634065883315367037}
   m_Layer: 7
   m_Name: UniversalLoop
-  m_TagString: Untagged
+  m_TagString: Deliverable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

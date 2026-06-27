@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7108650268880011043}
   m_Layer: 7
   m_Name: DeepCrate_Open
-  m_TagString: Untagged
+  m_TagString: Deliverable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,10 +502,6 @@ PrefabInstance:
     - target: {fileID: 9213475636979692981, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
       propertyPath: m_Name
       value: UniversalLoop (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9213475636979692981, guid: 4c8c1c350fff0b5448d51a25705701c4, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

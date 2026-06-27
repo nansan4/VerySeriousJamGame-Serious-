@@ -6147,6 +6147,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
       propertyPath: maxBoxesAllowed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}
+      propertyPath: maxBoxesToSpawn
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3199396230841561012, guid: 0ee190ba1d1e1f948bcc2237ef0332e5, type: 3}

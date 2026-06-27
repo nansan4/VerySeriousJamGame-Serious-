@@ -20,7 +20,7 @@ public class DeliveryManager : MonoBehaviour
 
     //should probably fold these into the GameState difficulty system
     [SerializeField] private int maxBoxesToSpawn = 3;
-    [SerializeField] private int maxBoxesAllowed = 1;
+    [SerializeField] private int maxBoxesAllowed = 4;
 
     private int _boxCount = 0; 
     private Transform _destination;
@@ -113,7 +113,7 @@ public class DeliveryManager : MonoBehaviour
         //Debug.Log("about to spawn " + rand + " boxes");
         while (count < rand)
         {
-            objectSpawners[idx].SpawnDeliverable();
+            objectSpawners[idx].TrySpawnDeliverable();
             idx = (idx + 1) % objectSpawners.Count;
             count++;
             yield return null;
@@ -130,7 +130,7 @@ public class DeliveryManager : MonoBehaviour
         int idx = Random.Range(0, objectSpawners.Count); //since max of random.range is exclusive
         int count = 0;
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(2f);
 
         //Debug.Log("about to spawn " + rand + " boxes");
 

@@ -59,7 +59,7 @@ public class DeliverableObject : MonoBehaviour
     {
         _currentMalfunctionChance = GameState.Instance.BoxMalfunctionChance + malfunctionAdditive;
         //_invalidityTime = GameState.Instance.BoxInvalidityTime;
-        _invalidityTime = 45f;
+        _invalidityTime = 80f;
 
         //_meshRenderer = gameObject.GetComponent<MeshRenderer>();
 
@@ -86,7 +86,7 @@ public class DeliverableObject : MonoBehaviour
             _isOnSurface = true;
             _surface = deliverAnywhere ? collision.gameObject : _destination;
 
-            Debug.Log("On Surface");
+            //Debug.Log("On Surface");
 
             if (!_isCheckingDelivery) { _deliveryRoutine = StartCoroutine(CheckDeliveryRoutine()); }
         }
@@ -131,13 +131,10 @@ public class DeliverableObject : MonoBehaviour
     {
         //Debug.Log("starting invalidity routine");
         yield return new WaitForSeconds(_invalidityTime);
-        Debug.Log("box is invalid now");
+        Debug.Log(gameObject + "box is invalid now");
 
-        if (_isOffHook)
-        {
-            DeliveryManager.Instance.DecrementScore();
-            PrepareBoxDestroy();
-        }
+        DeliveryManager.Instance.DecrementScore();
+        StartCoroutine(DespawnRoutine(0.25f)); //wait a bit to let the decrement score happen before despawning
     }
     private void BreakDeliverable()
     {
@@ -180,7 +177,7 @@ public class DeliverableObject : MonoBehaviour
                 //_destination.TryGetComponent<DeliverySurface>(out DeliverySurface surface);
                 //if (surface) surface.DeliverySequence();
                 _surface.GetComponent<DeliverySurface>()?.DeliverySequence();
-                StartCoroutine(DespawnRoutine());
+                StartCoroutine(DespawnRoutine(despawnWaitTime));
             }
             else
             {
@@ -203,7 +200,7 @@ public class DeliverableObject : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator DespawnRoutine()
+    private IEnumerator DespawnRoutine(float despawnWaitTime)
     {
         yield return new WaitForSeconds(despawnWaitTime);
 
@@ -238,7 +235,7 @@ public class DeliverableObject : MonoBehaviour
         hookDetectionTrigger.enabled = false;
 
         StopCoroutine(_invalidityRoutine);
-        StopCoroutine(_deliveryRoutine);
+        if(_deliveryRoutine != null) StopCoroutine(_deliveryRoutine);
         DeliveryManager.Instance.DecrementBoxCount();
 
         BoxCleanupManager.Instance.AddObjectToDestroy(gameObject);
